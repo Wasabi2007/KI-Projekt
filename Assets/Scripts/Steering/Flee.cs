@@ -22,7 +22,10 @@ public class Flee : TargetSteering {
 		Vector2 accel = (desiredVelocity - currentVelocity);
 		accel.Normalize();
 		accel *= Speed;
-		
+
+		Owner.rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
+
+
 		Owner.rigidbody2D.velocity = accel;
 	}
 		
