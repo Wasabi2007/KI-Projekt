@@ -9,7 +9,7 @@ public class Wander : Steering {
 	private float wanderAngularVelo;
 
 	private const float MAX_WANDER_VELO = 0.1f;
-	private const float CENTER_OFFSET = 0f;
+	private const float CENTER_OFFSET = 1f;
 	private const float WANDER_RADIUS = 0.60f;
 
 	//debugValue
@@ -31,8 +31,11 @@ public class Wander : Steering {
 		
 		Vector2 accel = (desiredVelocity - currentVelocity);
 		Owner.rigidbody2D.AddForceAtPosition (accel, calculateCircleCenter ());
+
 		//Owner.rigidbody2D.velocity = desiredVelocity;
-		//Owner.rigidbody2D.angularVelocity = Mathf.Rad2Deg*wanderAngle;
+		//Debug.Log(Vector2.Dot(currentVelocity,desiredVelocity));
+		//Debug.Log(Mathf.Acos(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized)));
+		Owner.rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized));
 
 		// move the circle point randomly on the circular path
 		// calculate a randomized acceleration for the circle point
