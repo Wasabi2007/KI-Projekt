@@ -1,15 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sequenz : MonoBehaviour {
+public class Sequence : BehaviourNode {
 
-	// Use this for initialization
-	void Start () {
-	
+	int childIndex = 0;
+
+	public override void Activate ()
+	{
+		base.Activate ();
+		childIndex = 0;
+		if (childNodes.Count > 0) {
+			childIndex++;
+			childNodes[childIndex-1].Activate();
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public override void ChildTerminated (BehaviourInterface child,bool result)
+	{
+		child.Deactivate ();
+		if (childIndex >= childNodes.Count) {
+			if(!isRoot){
+				parentNode.ChildTerminated(this,true);
+			}else{
+				Deactivate();
+			}
+			return;
+		}
+						
+		if (result) {
+				childNodes [childIndex].Activate ();
+				childIndex++;
+		} else {
+			if(!isRoot){
+				parentNode.ChildTerminated(this,false);
+			}else{
+				Deactivate();
+			}
+		}
+
 	}
 }
