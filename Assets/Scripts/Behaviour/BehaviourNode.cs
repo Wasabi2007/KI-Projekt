@@ -43,6 +43,9 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	}
 	public virtual void Deactivate (){
 		isActive = false;
+		foreach (LeafNode childNode in childNodes) {
+			childNode.Deactivate();
+		}
 		this.enabled = false;
 	}
 	public abstract void ChildTerminated (BehaviourInterface child,bool result);
