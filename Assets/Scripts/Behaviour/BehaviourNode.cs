@@ -8,6 +8,7 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	public bool IsActive {get{return isActive;} set{ isActive = value; }}
 	public List<LeafNode> childNodes {get; set;}
 	public ParentNode parentNode { get; set;}
+	public string Name{ get { return this.GetType().Name; }}
 
 	protected bool isRoot = false;
 

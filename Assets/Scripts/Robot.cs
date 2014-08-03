@@ -128,7 +128,7 @@ public class Robot : MonoBehaviour {
 		//Owner.rigidbody2D.velocity = desiredVelocity;
 		//Debug.Log(Vector2.Dot(currentVelocity,desiredVelocity));
 		//Debug.Log(Mathf.Acos(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized)));
-		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized));
+		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1f,1f));
 		
 		// move the circle point randomly on the circular path
 		// calculate a randomized acceleration for the circle point

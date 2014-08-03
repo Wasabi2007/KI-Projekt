@@ -6,6 +6,7 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	
 	public bool IsActive {get{return isActive;} set{ isActive = value; }}
 	public ParentNode parentNode {get; set;}
+	public string Name{ get { return this.GetType().Name; }}
 
 	// Use this for initialization
 	public virtual void Start () {
