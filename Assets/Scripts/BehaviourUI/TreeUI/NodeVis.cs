@@ -7,7 +7,7 @@ public class NodeVis : MonoBehaviour {
 	public LeafNode node;
 
 	public NodeVis parent;
-	public List<NodeVis> childs;
+	public List<NodeVis> childs = new List<NodeVis> ();
 	public TreeVis treeVis;
 	public LinkVis linkToParent;
 
@@ -28,6 +28,16 @@ public class NodeVis : MonoBehaviour {
 	}
 
 	public void init(LeafNode myNode){
+		if (linkToParent != null) {
+			GameObject.Destroy(linkToParent.gameObject);
+			linkToParent = null;
+		}
+
+		foreach(NodeVis nVis in childs){
+			GameObject.Destroy(nVis.gameObject);
+		}
+		childs.Clear ();
+
 		node = myNode;
 		if (parent != null) {
 			GameObject link = (GameObject)GameObject.Instantiate(treeVis.linkPrefab.gameObject);
@@ -38,7 +48,6 @@ public class NodeVis : MonoBehaviour {
 			linkToParent.setUpLine(Vector3.zero,parent.transform.position-transform.position);
 		}
 
-		childs = new List<NodeVis> ();
 		if (myNode is ParentNode) {
 			foreach(LeafNode LNode in ((ParentNode)myNode).childNodes){		
 				GameObject go = treeVis.InstanceNodeGameobject (LNode.Name);			
