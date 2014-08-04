@@ -9,6 +9,7 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	public List<LeafNode> childNodes {get; set;}
 	public ParentNode parentNode { get; set;}
 	public string Name{ get { return this.GetType().Name; }}
+	public int Index{ get { return transform.GetSiblingIndex (); } set { transform.SetSiblingIndex (value); } }
 
 	protected bool isRoot = false;
 

@@ -76,6 +76,14 @@ public class NodeVis : MonoBehaviour {
 			treeVis.TreeVisRoot.calculatePosition(0);
 			oldColaps = colaps;	
 		}
+
+		if (linkToParent != null) {
+						if (node.IsActive) {
+								linkToParent.lr.SetColors (Color.green, Color.green);
+						} else {
+								linkToParent.lr.SetColors (Color.white, Color.white);
+						}
+				}
 	}
 
 	public void calculatePosition(int index){

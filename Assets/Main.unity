@@ -396,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 597703131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00425531901, y: .00425531901, z: .00425531901}
+  m_LocalScale: {x: .00416666688, y: .00416666688, z: .00416666688}
   m_Children:
   - {fileID: 1109440271}
   - {fileID: 1998549749}
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba2be21507d5e04d87f6c56e67b3f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
+  isActive: 1
 --- !u!1 &1109440268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1078,61 @@ MonoBehaviour:
   isActive: 0
   WaitTime: 5
   TerminateWith: 1
+--- !u!1 &1168630945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1168630947}
+  - 114: {fileID: 1168630946}
+  - 114: {fileID: 1168630948}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1168630946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168630945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75074d7a292787645aa75023866e52c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  indexUpToggle: 0
+  indexDownToggle: 0
+--- !u!4 &1168630947
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168630945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0276624709, y: -.140103221, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+--- !u!114 &1168630948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168630945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba2be21507d5e04d87f6c56e67b3f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!1 &1300318279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1396,7 @@ MonoBehaviour:
   startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 3
-  mClipRange: {x: 0, y: 0, z: 752, w: 470}
+  mClipRange: {x: 0, y: 0, z: 640, w: 479.999969}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 1
   mSortingOrder: 0
