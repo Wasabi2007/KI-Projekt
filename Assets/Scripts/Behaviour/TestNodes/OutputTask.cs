@@ -5,6 +5,12 @@ public class OutputTask : Task {
 
 	public string Message = "";
 
+	public override void Start ()
+	{
+		base.Start ();
+		info = "Out:"+Message;
+	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

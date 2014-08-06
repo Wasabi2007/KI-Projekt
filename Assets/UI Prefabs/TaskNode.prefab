@@ -61,6 +61,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400014}
   m_Layer: 5
   m_Name: TaskNode
   m_TagString: Untagged
@@ -403,6 +404,23 @@ MonoBehaviour:
   callWhenFinished: 
   from: {r: 1, g: 1, b: 1, a: 1}
   to: {r: .406896591, g: 1, b: 0, a: 1}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa39f4d57af48d4b9b7121f8721407d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  NV: {fileID: 0}
+  indexUpToggle: 0
+  indexDownToggle: 0
+  infoDisplay: {fileID: 11400000}
+  MyTask: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

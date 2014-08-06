@@ -3,23 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 
 public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
-	public bool isActive = false;
+	private bool isActive = false;
 
 	public bool IsActive {get{return isActive;} set{ isActive = value; }}
 	public List<LeafNode> childNodes {get; set;}
 	public ParentNode parentNode { get; set;}
 	public string Name{ get { return this.GetType().Name; }}
-	public int Index{ get { return transform.GetSiblingIndex (); } set { transform.SetSiblingIndex (value); } }
+	public int Index{ 
+		get { 	return transform.GetSiblingIndex (); } 
+		set { 	parentNode.childNodes.Remove(this); 
+				parentNode.childNodes.Insert(Mathf.Clamp(value,0,parentNode.childNodes.Count),this); 
+				transform.SetSiblingIndex (value);
+		} 
+	}
+	private BehaviourTree tree;
+	public BehaviourTree Tree {get{ return tree; } set{tree = value; if(childNodes != null)foreach(LeafNode ln in childNodes){ln.Tree = value;}}}
+	public GameObject Owner{get{ return (tree!= null?tree.Owner:null); } set{tree.Owner = value;}}
 
 	protected bool isRoot = false;
 
 	public virtual void Awake () {
-
-	}
-
-	// Use this for initialization
-	public virtual void Start () {
-
 		childNodes = new List<LeafNode>();
 		for (int childCount = 0; childCount < transform.childCount; childCount++) {
 			childNodes.AddRange(transform.GetChild(childCount).GetComponents<BehaviourNode>());
@@ -27,10 +30,24 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 		}
 		if(transform.parent != null)
 			parentNode = transform.parent.GetComponent<BehaviourNode> ();
-
+		
 		if(parentNode == null || parentNode == this) {
 			isRoot = true;	
 		}
+	}
+
+	public virtual void OnEnable() {
+		if (isActive) {
+			Activate ();	
+		} else {
+			this.enabled = false;
+		}
+	}
+
+	// Use this for initialization
+	public virtual void Start () {
+
+
 		//Debug.Log (gameObject+" parent "+parentNode);
 		if (isActive) {
 			Activate ();	

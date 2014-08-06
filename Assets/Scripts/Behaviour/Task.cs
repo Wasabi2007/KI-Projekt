@@ -2,12 +2,22 @@
 using System.Collections;
 
 public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
-	public bool isActive = false;
+	private bool isActive = false;
 	
 	public bool IsActive {get{return isActive;} set{ isActive = value; }}
 	public ParentNode parentNode {get; set;}
 	public string Name{ get { return this.GetType().Name; }}
-	public int Index{ get { return transform.GetSiblingIndex (); } set { transform.SetSiblingIndex (value); } }
+	public int Index{ 
+		get { 	return transform.GetSiblingIndex (); } 
+		set { 	parentNode.childNodes.Remove(this); 
+			parentNode.childNodes.Insert(Mathf.Clamp(value,0,parentNode.childNodes.Count),this); 
+			transform.SetSiblingIndex (value);
+		} 
+	}
+	private BehaviourTree tree;
+	public BehaviourTree Tree {get{ return tree; } set{tree = value;}}
+	public GameObject Owner{get{ return (tree!= null?tree.Owner:null); } set{tree.Owner = value;}}
+	public string info;
 
 	// Use this for initialization
 	public virtual void Start () {
@@ -31,8 +41,6 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	}
 	public virtual void ChildTerminated (BehaviourInterface child,bool result){}
 
-	// Update is called once per frame
-	public virtual void Update () {
-	
-	}
+	public virtual void Update(){
+		}
 }
