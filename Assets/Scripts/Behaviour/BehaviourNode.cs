@@ -19,6 +19,7 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	private BehaviourTree tree;
 	public BehaviourTree Tree {get{ return tree; } set{tree = value; if(childNodes != null)foreach(LeafNode ln in childNodes){ln.Tree = value;}}}
 	public GameObject Owner{get{ return (tree!= null?tree.Owner:null); } set{tree.Owner = value;}}
+	public GameObject HirachiOwner {get{ return gameObject; }}
 
 	protected bool isRoot = false;
 

@@ -11,6 +11,12 @@ public class TreeVis : MonoBehaviour {
 		public GameObject Prefab;
 	}
 
+	[System.Serializable]
+	public class NodeAddBinding{
+		public string Display;
+		public string Class;
+	}
+
 	public BehaviourNode TreeRoot; 
 	public NodeVis TreeVisRoot; 
 
@@ -21,6 +27,8 @@ public class TreeVis : MonoBehaviour {
 
 
 	public NodeVisBinding[] binds;
+	public NodeAddBinding[] Classes;
+
 
 
 	// Use this for initialization
@@ -50,5 +58,15 @@ public class TreeVis : MonoBehaviour {
 		}
 
 		return GameObject.CreatePrimitive(PrimitiveType.Cube);
+	}
+
+	public string getClassName(string Allias){
+		foreach (NodeAddBinding bind in Classes) {
+			if(Regex.IsMatch(Allias,bind.Display)){
+				return bind.Class;
+			}
+		}
+		
+		return "Selector";
 	}
 }

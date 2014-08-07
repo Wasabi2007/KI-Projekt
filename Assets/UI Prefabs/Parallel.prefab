@@ -61,6 +61,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400014}
   m_Layer: 5
   m_Name: Parallel
   m_TagString: Untagged
@@ -391,6 +392,25 @@ MonoBehaviour:
   callWhenFinished: 
   from: {r: 1, g: 1, b: 1, a: 1}
   to: {r: .406896591, g: 1, b: 0, a: 1}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c45dfbec62d8140b3e637c0452dce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  NV: {fileID: 0}
+  indexUpToggle: 0
+  indexDownToggle: 0
+  removeIt: 0
+  Node: {fileID: 0}
+  addTestClass: 0
+  ClassName: Debug Out
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

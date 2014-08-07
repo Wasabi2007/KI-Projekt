@@ -17,6 +17,7 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	private BehaviourTree tree;
 	public BehaviourTree Tree {get{ return tree; } set{tree = value;}}
 	public GameObject Owner{get{ return (tree!= null?tree.Owner:null); } set{tree.Owner = value;}}
+	public GameObject HirachiOwner {get{ return gameObject; }}
 	public string info;
 
 	// Use this for initialization

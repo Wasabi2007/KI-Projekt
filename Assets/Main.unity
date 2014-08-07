@@ -1733,6 +1733,11 @@ MonoBehaviour:
     Prefab: {fileID: 100006, guid: 252aa392151331642aeb88d60cc576ad, type: 2}
   - Class: .*Task
     Prefab: {fileID: 100006, guid: e5316b70a91cbce48bfd4e2d3256512d, type: 2}
+  Classes:
+  - Display: Debug Out
+    Class: OutputTask
+  - Display: Wait
+    Class: WaitTask
 --- !u!4 &2049078017
 Transform:
   m_ObjectHideFlags: 0

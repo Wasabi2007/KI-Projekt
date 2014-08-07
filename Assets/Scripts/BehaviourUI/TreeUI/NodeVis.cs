@@ -13,7 +13,7 @@ public class NodeVis : MonoBehaviour {
 
 	public bool colaps = false;
 	private bool oldColaps = false;
-	private bool needSizeRecalced = true;
+	public bool needSizeRecalced = true;
 
 	private float childSizeBuffer = 0;
 
@@ -50,17 +50,23 @@ public class NodeVis : MonoBehaviour {
 
 		if (myNode is ParentNode) {
 			foreach(LeafNode LNode in ((ParentNode)myNode).childNodes){		
-				GameObject go = treeVis.InstanceNodeGameobject (LNode.Name);			
-				NodeVis nv = go.AddComponent<NodeVis>();
-				go.transform.parent = this.transform;
-				go.transform.localScale = Vector3.one;
-				go.layer = this.gameObject.layer;
-				nv.parent = this;
-				nv.treeVis = treeVis;
-				nv.init(LNode);
-				childs.Add(nv);
+				AddChild (LNode);			
 			}
 		}
+	}
+
+	public void AddChild (LeafNode LNode)
+	{
+		GameObject go = treeVis.InstanceNodeGameobject (LNode.Name);
+		NodeVis nv = go.AddComponent<NodeVis> ();
+		go.transform.parent = this.transform;
+		go.transform.localScale = Vector3.one;
+		go.layer = this.gameObject.layer;
+		nv.parent = this;
+		nv.treeVis = treeVis;
+		nv.init (LNode);
+		childs.Add (nv);
+		needSizeRecalced = true;
 	}
 	
 	// Update is called once per frame

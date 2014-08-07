@@ -9,6 +9,7 @@ public class NodeEditor : MonoBehaviour {
 
 	public bool indexUpToggle = false;
 	public bool indexDownToggle = false;
+	public bool removeIt = false;
 
 	void indexUp(){
 		if(Node.Index - 1 >= 0)
@@ -33,6 +34,16 @@ public class NodeEditor : MonoBehaviour {
 		NV.parent.childs.Insert (index,NV);
 		NV.parent.calculatePosition (0);
 	}
+
+	void remove(){
+		NV.parent.childs.Remove (NV);
+		NV.node.parentNode.childNodes.Remove (NV.node);
+		NV.parent.needSizeRecalced = true;
+		NV.treeVis.TreeVisRoot.calculatePosition (0);
+		GameObject.Destroy (NV.node.HirachiOwner);
+		GameObject.Destroy (NV.gameObject);
+	}
+
 	// Use this for initialization
 	virtual public void Start () {
 		NV = GetComponent<NodeVis> ();
@@ -54,6 +65,10 @@ public class NodeEditor : MonoBehaviour {
 			Node = NV.node;
 			index = Node.Index;
 		}
+		if (removeIt) {
+			removeIt = false;
+			remove();
+				}
 		if (indexUpToggle) {
 			indexUpToggle = false;
 			indexUp();
