@@ -171,9 +171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StringPrefab: {fileID: 11400008, guid: 9564571c3415e0c46b2ea50229c3ae01, type: 2}
-  FloatPrefab: {fileID: 11400008, guid: 9564571c3415e0c46b2ea50229c3ae01, type: 2}
-  IntPrefab: {fileID: 11400008, guid: 9564571c3415e0c46b2ea50229c3ae01, type: 2}
+  FloatPrefab: {fileID: 11400008, guid: 14dc3dfa798d3b64bb5b46a2562d911b, type: 2}
+  IntPrefab: {fileID: 11400008, guid: b752877284b10374d81aad05a73a8744, type: 2}
   BoolPrefab: {fileID: 11400000, guid: 740ed64d89cf2774486aba7f0de0eb9e, type: 2}
+  ChildDisplay: {fileID: 11400000, guid: ec00360cbd0cd344caf319ff970d6df1, type: 2}
+  PopUplistPrefab: {fileID: 11400000, guid: 8048112e14260dc419b44877152d2f90, type: 2}
   treevis: {fileID: 2049078016}
 --- !u!1 &17588670
 GameObject:
@@ -878,7 +880,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.79999995
+  aspectRatio: .390625
   mType: 2
   mFillDirection: 4
   mFillAmount: 1
@@ -1123,11 +1125,7 @@ MonoBehaviour:
   ifDisabledOnPlay: 0
   disableWhenFinished: 0
   includeChildren: 0
-  onFinished:
-  - mTarget: {fileID: 1978530931}
-    mMethodName: toggle
-    mParameters: []
-    oneShot: 0
+  onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
 --- !u!1 &542363841
@@ -1893,7 +1891,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .200000003
+  aspectRatio: 1
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -2073,7 +2071,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 963637637}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fe5d396737f89f4ea1534bc147cad2e, type: 3}
   m_Name: 
@@ -2100,7 +2098,11 @@ MonoBehaviour:
   duration: 1
   steeperCurves: 0
   tweenGroup: 0
-  onFinished: []
+  onFinished:
+  - mTarget: {fileID: 1978530931}
+    mMethodName: toggle
+    mParameters: []
+    oneShot: 0
   eventReceiver: {fileID: 0}
   callWhenFinished: 
   from: 350
@@ -2142,7 +2144,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .455729157
+  aspectRatio: 175
 --- !u!1 &980009834
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,7 +3065,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .44921875
+  aspectRatio: 150
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -3239,7 +3241,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .200000003
+  aspectRatio: 1
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
