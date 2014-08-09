@@ -4,7 +4,13 @@ using System.Collections;
 public class Selector : BehaviourNode {
 
 	int childIndex = 0;
-	
+
+	public override void OnEnable ()
+	{
+		base.OnEnable ();
+		this.info = "Selector";
+	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

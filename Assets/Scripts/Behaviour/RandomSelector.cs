@@ -6,6 +6,12 @@ public class RandomSelector : BehaviourNode {
 
 	protected List<LeafNode> leftTotry;
 
+	public override void OnEnable ()
+	{
+		base.OnEnable ();
+		info = "Random Selector";
+	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

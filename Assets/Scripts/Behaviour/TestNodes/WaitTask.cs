@@ -7,6 +7,19 @@ public class WaitTask : Task {
 	public bool TerminateWith = true;
 
 	private float stime = 0;
+	private TaskAttribute waitTimeTa;
+
+	public virtual void Awake ()
+	{
+		waitTimeTa = addAttribute ("WaitTime",TaskAttributeType.FLOAT,WaitTime.ToString(), "setWaitTime");
+	}
+
+	public void setWaitTime(Object obj){
+		UIInput input = (UIInput)obj;
+		WaitTime = float.Parse(input.value);
+		info = "Wait:"+WaitTime+" sec";
+		waitTimeTa.Value = WaitTime.ToString ();
+	}
 
 	public override void Start ()
 	{

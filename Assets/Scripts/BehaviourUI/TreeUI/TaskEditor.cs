@@ -28,7 +28,7 @@ public class TaskEditor : NodeEditor {
 
 	void updateinfo(){
 		if (infoDisplay != null && MyTask != null) {
-			infoDisplay.text = MyTask.info;		
+			infoDisplay.text = MyTask.Info;		
 		}
 	}
 }

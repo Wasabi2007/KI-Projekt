@@ -6,6 +6,12 @@ public class ParralelNode : BehaviourNode {
 
 	int childReturns = 0;
 
+	public override void OnEnable ()
+	{
+		base.OnEnable ();
+		info = "ParralelNode";
+	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BehaviourNodeEditor : NodeEditor {
 
-	public BehaviourNode Node;
+	public BehaviourNode BNode;
 
 	public bool addTestClass = false;
 	public string ClassName = "Debug Out";
@@ -11,7 +11,7 @@ public class BehaviourNodeEditor : NodeEditor {
 	public void AddNode(string Allias){
 		GameObject go = new GameObject (Allias);
 		LeafNode lNode = (LeafNode)go.AddComponent (NV.treeVis.getClassName(Allias));
-		go.transform.parent = Node.transform;
+		go.transform.parent = BNode.transform;
 
 		NV.AddChild (lNode);
 		NV.treeVis.TreeVisRoot.calculatePosition (0);
@@ -21,7 +21,7 @@ public class BehaviourNodeEditor : NodeEditor {
 	public override void Start () {
 		base.Start ();
 		if (NV != null&& NV.node is BehaviourNode) {
-			Node = (BehaviourNode)NV.node;
+			BNode = (BehaviourNode)NV.node;
 		}
 
 	}
@@ -31,7 +31,7 @@ public class BehaviourNodeEditor : NodeEditor {
 		base.Update ();
 		if (Node == null) {
 			if (NV != null&& NV.node is BehaviourNode) {
-				Node = (BehaviourNode)NV.node;
+				BNode = (BehaviourNode)NV.node;
 			}		
 		}
 

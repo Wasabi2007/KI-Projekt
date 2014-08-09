@@ -3,7 +3,11 @@ using System.Collections;
 
 public class UtilFail : BehaviourNode {
 
-
+	public override void OnEnable ()
+	{
+		base.OnEnable ();
+		info = "UtilFail";
+	}
 
 	public override void Activate ()
 	{

@@ -30,6 +30,7 @@ public class TreeVis : MonoBehaviour {
 	public NodeAddBinding[] Classes;
 
 
+	public NodeEditor SelectedNode;
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +50,21 @@ public class TreeVis : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void SelectedIndexUp(){
+		if (SelectedNode != null)
+			SelectedNode.indexUp ();
+	}
+
+	public void SelectedIndexDown(){
+		if (SelectedNode != null)
+			SelectedNode.indexDown();
+	}
+
+//	public void setSelectedNode{NodeEditor ne){
+//			SelectedNode = ne;
+//	}
+
 
 	public GameObject InstanceNodeGameobject(string Class){
 		foreach (NodeVisBinding bind in binds) {

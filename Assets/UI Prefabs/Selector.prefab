@@ -61,8 +61,8 @@ GameObject:
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400012}
   - 114: {fileID: 11400016}
+  - 114: {fileID: 11400018}
   m_Layer: 5
   m_Name: Selector
   m_TagString: Untagged
@@ -367,21 +367,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollView: {fileID: 0}
   draggablePanel: {fileID: 0}
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c4ff40739c7904ca26c14ffbdc4176, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 100006}
-  functionName: toggleColaps
-  trigger: 5
-  includeChildren: 0
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,9 +421,38 @@ MonoBehaviour:
   indexUpToggle: 0
   indexDownToggle: 0
   removeIt: 0
-  Node: {fileID: 0}
+  BNode: {fileID: 0}
   addTestClass: 0
   ClassName: Debug Out
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e862f287df53bb64db191162f851a296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverOver: []
+  onHoverOut: []
+  onPress: []
+  onRelease: []
+  onSelect: []
+  onDeselect: []
+  onClick:
+  - mTarget: {fileID: 11400016}
+    mMethodName: selectThisNode
+    mParameters: []
+    oneShot: 0
+  onDoubleClick:
+  - mTarget: {fileID: 11400016}
+    mMethodName: toggleColaps
+    mParameters: []
+    oneShot: 0
+  onDragOver: []
+  onDragOut: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

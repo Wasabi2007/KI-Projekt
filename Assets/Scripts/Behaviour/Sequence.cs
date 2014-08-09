@@ -5,6 +5,12 @@ public class Sequence : BehaviourNode {
 
 	int childIndex = 0;
 
+	public override void OnEnable ()
+	{
+		base.OnEnable ();
+		info = "Sequence";
+	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

@@ -17,12 +17,10 @@ public class NodeVis : MonoBehaviour {
 
 	private float childSizeBuffer = 0;
 
-
 	// Use this for initialization
 	void Start () {
 	
 	}
-
 	public void toggleColaps(){
 		colaps = !colaps;
 	}

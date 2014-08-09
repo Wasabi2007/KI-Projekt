@@ -5,6 +5,20 @@ public class OutputTask : Task {
 
 	public string Message = "";
 
+	private TaskAttribute messageTa;
+
+	public virtual void Awake ()
+	{
+		messageTa = addAttribute ("Message",TaskAttributeType.STRING,Message, "setMessage");
+	}
+
+	public void setMessage(Object obj){
+		UIInput input = (UIInput)obj;
+		Message = input.value;
+		info = "Out:"+Message;
+		messageTa.Value = Message;
+	}
+
 	public override void Start ()
 	{
 		base.Start ();

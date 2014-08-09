@@ -11,7 +11,7 @@ public class NodeEditor : MonoBehaviour {
 	public bool indexDownToggle = false;
 	public bool removeIt = false;
 
-	void indexUp(){
+	virtual public void indexUp(){
 		if(Node.Index - 1 >= 0)
 			transform.SetSiblingIndex (transform.GetSiblingIndex () - 1);
 
@@ -23,7 +23,7 @@ public class NodeEditor : MonoBehaviour {
 		NV.parent.calculatePosition (0);
 	}
 
-	void indexDown(){
+	virtual public void indexDown(){
 		if(Node.Index + 1 <= NV.parent.childs.Count)
 			transform.SetSiblingIndex (transform.GetSiblingIndex () + 1);
 
@@ -35,13 +35,26 @@ public class NodeEditor : MonoBehaviour {
 		NV.parent.calculatePosition (0);
 	}
 
-	void remove(){
+	virtual public void remove(){
 		NV.parent.childs.Remove (NV);
 		NV.node.parentNode.childNodes.Remove (NV.node);
 		NV.parent.needSizeRecalced = true;
 		NV.treeVis.TreeVisRoot.calculatePosition (0);
+		if (NV.treeVis.SelectedNode == this) {
+			NV.treeVis.SelectedNode = null;
+		}
 		GameObject.Destroy (NV.node.HirachiOwner);
 		GameObject.Destroy (NV.gameObject);
+	}
+
+	virtual public void toggleColaps(){
+		if (NV != null)
+		NV.toggleColaps ();
+	}
+
+	virtual public void selectThisNode(){
+		if (NV != null)
+		NV.treeVis.SelectedNode = this;
 	}
 
 	// Use this for initialization
