@@ -11,10 +11,14 @@ public class BehaviourNodeEditor : NodeEditor {
 	public void AddNode(string Allias){
 		GameObject go = new GameObject (Allias);
 		LeafNode lNode = (LeafNode)go.AddComponent (NV.treeVis.getClassName(Allias));
+		lNode.parentNode = BNode;
+		BNode.childNodes.Add (lNode);
 		go.transform.parent = BNode.transform;
 
 		NV.AddChild (lNode);
+		NV.NeedSizeRecalced = true;
 		NV.treeVis.TreeVisRoot.calculatePosition (0);
+
 	}
 
 	// Use this for initialization

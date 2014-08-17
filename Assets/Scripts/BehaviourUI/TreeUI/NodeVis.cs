@@ -13,7 +13,17 @@ public class NodeVis : MonoBehaviour {
 
 	public bool colaps = false;
 	private bool oldColaps = false;
-	public bool needSizeRecalced = true;
+	private bool needSizeRecalced = true;
+
+	//if one Child need a new size all parents alsow need to recalculate;
+	public bool NeedSizeRecalced {
+				get{ return needSizeRecalced; } 
+				set {
+						needSizeRecalced = value; 
+						if (parent != null)
+								parent.NeedSizeRecalced = value;
+				}
+		}
 
 	private float childSizeBuffer = 0;
 
@@ -64,15 +74,15 @@ public class NodeVis : MonoBehaviour {
 		nv.treeVis = treeVis;
 		nv.init (LNode);
 		childs.Add (nv);
-		needSizeRecalced = true;
+		NeedSizeRecalced = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (colaps != oldColaps) {
-			needSizeRecalced = true;
+			NeedSizeRecalced = true;
 			for(NodeVis p = parent; p != null; p = p.parent){
-				p.needSizeRecalced = true;
+				p.NeedSizeRecalced = true;
 			}
 			foreach(NodeVis nVis in childs){
 				nVis.gameObject.SetActive(!colaps);
@@ -91,8 +101,9 @@ public class NodeVis : MonoBehaviour {
 	}
 
 	public void calculatePosition(int index){
-
-
+		//Debug.Log (index);
+		index = (node!=null&&parent!=null?node.Index:index);
+		//Debug.Log (index);
 		float parentChildsize = (parent != null?parent.childSize():childSize());
 		float neighborSize = 0;
 		for (int neigbohr = 0; neigbohr < index; neigbohr++) {
@@ -111,7 +122,7 @@ public class NodeVis : MonoBehaviour {
 	}
 
 	public float childSize(){
-		if (childSizeBuffer != 0 && !needSizeRecalced) {
+		if (childSizeBuffer != 0 && !NeedSizeRecalced) {
 			return childSizeBuffer;
 		}
 		childSizeBuffer = 0;

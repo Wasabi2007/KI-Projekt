@@ -7,8 +7,9 @@ public class OutputTask : Task {
 
 	private TaskAttribute messageTa;
 
-	public virtual void Awake ()
+	public override void Awake ()
 	{
+		base.Awake ();
 		messageTa = addAttribute ("Message",TaskAttributeType.STRING,Message, "setMessage");
 	}
 

@@ -38,7 +38,7 @@ public class NodeEditor : MonoBehaviour {
 	virtual public void remove(){
 		NV.parent.childs.Remove (NV);
 		NV.node.parentNode.childNodes.Remove (NV.node);
-		NV.parent.needSizeRecalced = true;
+		NV.NeedSizeRecalced = true;
 		NV.treeVis.TreeVisRoot.calculatePosition (0);
 		if (NV.treeVis.SelectedNode == this) {
 			NV.treeVis.SelectedNode = null;

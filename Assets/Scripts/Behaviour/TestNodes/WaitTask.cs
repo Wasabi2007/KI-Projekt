@@ -9,8 +9,9 @@ public class WaitTask : Task {
 	private float stime = 0;
 	private TaskAttribute waitTimeTa;
 
-	public virtual void Awake ()
+	public override void Awake ()
 	{
+		base.Awake ();
 		waitTimeTa = addAttribute ("WaitTime",TaskAttributeType.FLOAT,WaitTime.ToString(), "setWaitTime");
 	}
 

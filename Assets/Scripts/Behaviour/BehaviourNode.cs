@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//[SerializeAll]
 public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	private bool isActive = false;
 
@@ -23,9 +24,10 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	protected string info = "BehaviourNode";
 	public string Info{ get{return info;} }
 
-	protected bool isRoot = false;
+	protected bool isRoot { get { return (parentNode == null || parentNode == this); } }
 
 	public virtual void Awake () {
+		gameObject.AddMissingComponent<StoreInformation> ();
 		childNodes = new List<LeafNode>();
 		for (int childCount = 0; childCount < transform.childCount; childCount++) {
 			childNodes.AddRange(transform.GetChild(childCount).GetComponents<BehaviourNode>());
@@ -33,10 +35,6 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 		}
 		if(transform.parent != null)
 			parentNode = transform.parent.GetComponent<BehaviourNode> ();
-		
-		if(parentNode == null || parentNode == this) {
-			isRoot = true;	
-		}
 	}
 
 	public virtual void OnEnable() {
