@@ -75,8 +75,10 @@ public class NodeEditor : MonoBehaviour {
 	virtual public void Update () {
 		if (NV == null) {
 			NV = GetComponent<NodeVis> ();
-			Node = NV.node;
-			index = Node.Index;
+			if(NV != null){
+				Node = NV.node;
+				index = Node.Index;
+			}
 		}
 		if (removeIt) {
 			removeIt = false;

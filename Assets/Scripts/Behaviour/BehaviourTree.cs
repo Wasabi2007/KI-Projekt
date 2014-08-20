@@ -11,7 +11,8 @@ public class BehaviourTree : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		TreeRoot.Tree = this;
+		if(TreeRoot!=null)
+			TreeRoot.Tree = this;
 	}
 
 	public void StartBehaviour(){
@@ -27,20 +28,46 @@ public class BehaviourTree : MonoBehaviour {
 		}
 		if (Save) {
 			Save = false;
-			SaveTree();
+			SaveTree("Pah.dat");
 		}
 		if (Load) {
 			Load = false;
-			LoadTree();
+			LoadTree("Pah.dat");
 		}
 	}
 
-	public void SaveTree(){
-		LevelSerializer.SaveObjectTreeToFile ("Pah.dat", TreeRoot.gameObject);
+	public void SaveTree(string FileName){
+		if (FileName.Length == 0)
+				return;
+
+		LevelSerializer.SaveObjectTreeToFile (FileName, TreeRoot.gameObject);
+		TreeSaveManager.getTreeSaveManager ().savedTrees.Add (FileName);
+		//Debug.Log ("Saved: " + FileName);
 	}
 
-	public void LoadTree(){
-		LevelSerializer.LoadObjectTreeFromFile("Pah.dat");
+	public void LoadTree(string FileName){
+		if (FileName.Length == 0)
+			return;
 
+		if (TreeRoot != null) {
+			GameObject.DestroyImmediate (TreeRoot.gameObject);
+			TreeVis.getTreeVis ().DestroyTree ();
+			TreeRoot=null;
+			TreeVis.getTreeVis ().TreeRoot = null;
+		}
+
+		LevelSerializer.LoadObjectTreeFromFile(FileName,loaded);
+
+		//LevelSerializer.Collect ();
+		//LevelSerializer.LoadObjectTreeFromFile("Pah.dat");
 	}
+
+	void loaded(LevelLoader obj){
+		TreeRoot = obj.rootObject.GetComponent<BehaviourNode> ();
+		TreeRoot.Tree = this;
+		TreeRoot.ReCaptureChildsAndParents ();
+		TreeVis.getTreeVis ().TreeRoot = TreeRoot;
+		TreeVis.getTreeVis ().LoadTree ();
+	}
+
 }

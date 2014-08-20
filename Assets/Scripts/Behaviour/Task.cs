@@ -38,6 +38,15 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 
 	public virtual void Awake(){
 		gameObject.AddMissingComponent<StoreInformation> ();
+		if(transform.parent != null)
+			parentNode = transform.parent.GetComponent<BehaviourNode> ();
+		//if (LevelSerializer.IsDeserializing)
+		//	return;
+	}
+
+	public void ReCaptureChildsAndParents(){
+		if(transform.parent != null)
+			parentNode = transform.parent.GetComponent<BehaviourNode> ();
 	}
 
 	// Use this for initialization

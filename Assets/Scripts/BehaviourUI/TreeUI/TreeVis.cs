@@ -32,8 +32,32 @@ public class TreeVis : MonoBehaviour {
 
 	public NodeEditor SelectedNode;
 
+	public bool recalcPos = false;
+
+	private static TreeVis singleton;
+
+	public static TreeVis getTreeVis(){
+		if (singleton == null) {
+			GameObject TreeSaveManagerGo = new GameObject();
+			singleton = TreeSaveManagerGo.AddComponent<TreeVis>();
+		}
+		return singleton;
+	}
+
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		if (singleton == null) {
+			singleton = this;
+		} else {
+			GameObject.Destroy(gameObject);
+		}
+	}
+	void Start(){
+		//LoadTree ();
+	}
+
+	public void LoadTree(){
+		Debug.Log ("Load");
 		GameObject go = InstanceNodeGameobject (TreeRoot.Name);
 		go.transform.parent = this.transform;
 		go.transform.localScale = Vector3.one;
@@ -42,13 +66,24 @@ public class TreeVis : MonoBehaviour {
 		nv.parent = null;
 		nv.treeVis = this;
 		TreeVisRoot = nv;
+		Debug.Log ("RootChilds: "+TreeRoot.childNodes.Count);
 		nv.init(TreeRoot);
 		nv.calculatePosition (0);
+	}
+
+	public void DestroyTree(){
+		transform.DestroyChildren ();
+		TreeVisRoot = null;
+
+		transform.DestroyChildren ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (recalcPos) {
+			recalcPos=false;
+			TreeVisRoot.calculatePosition (0);	
+		}
 	}
 
 	public void SelectedIndexUp(){

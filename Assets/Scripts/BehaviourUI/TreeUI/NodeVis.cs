@@ -56,7 +56,7 @@ public class NodeVis : MonoBehaviour {
 			linkToParent.setUpLine(Vector3.zero,parent.transform.position-transform.position);
 		}
 
-		if (myNode is ParentNode) {
+		if (myNode is ParentNode && ((ParentNode)myNode).childNodes != null) {
 			foreach(LeafNode LNode in ((ParentNode)myNode).childNodes){		
 				AddChild (LNode);			
 			}
