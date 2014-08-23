@@ -10,9 +10,16 @@ public class Robot : MonoBehaviour {
 	public int Ammo;
 	public float Speed;
 
+	public float Attdist = 20f; // Angriffsdistanz
+	public float Sightdist = 40f; // Sichtweite
+
 	public GameObject Target;
 
 	public SteeringType steeringtype = SteeringType.Wander;
+
+	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
+	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
+	public BattleStatus enemyBattleStatus = BattleStatus.NotInBattle;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +40,8 @@ public class Robot : MonoBehaviour {
 			seekSteering();
 			break;
 		case SteeringType.None:
+			rigidbody2D.velocity = Vector2.zero;
+			rigidbody2D.angularVelocity = 0f;
 			break;
 		}
 	

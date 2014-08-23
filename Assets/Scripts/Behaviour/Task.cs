@@ -53,13 +53,14 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	public virtual void Start () {
 		
 		parentNode = transform.parent.GetComponent<BehaviourNode> ();
-
+		
 		if (isActive) {
 			Activate ();	
 		} else {
 			this.enabled = false;
 		}
 	}
+
 
 	public virtual TaskAttribute addAttribute(string attributeName,TaskAttributeType t,string defaultValue, string functionName){
 		TaskAttribute ta = new TaskAttribute (attributeName, t, defaultValue, this, functionName);

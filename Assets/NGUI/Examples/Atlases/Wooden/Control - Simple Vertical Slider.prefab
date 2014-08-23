@@ -338,10 +338,18 @@ MonoBehaviour:
   thumb: {fileID: 400002}
   mBG: {fileID: 11400012}
   mFG: {fileID: 11400006}
-  mValue: .308320493
+  mValue: .308320194
   mFill: 2
   numberOfSteps: 0
   onChange:
+  - mTarget: {fileID: 0}
+    mMethodName: OnScrollBar
+    mParameters: []
+    oneShot: 0
+  - mTarget: {fileID: 0}
+    mMethodName: OnScrollBar
+    mParameters: []
+    oneShot: 0
   - mTarget: {fileID: 0}
     mMethodName: OnScrollBar
     mParameters: []

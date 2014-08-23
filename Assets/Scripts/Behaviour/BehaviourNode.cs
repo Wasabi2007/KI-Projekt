@@ -77,11 +77,11 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 
 
 		//Debug.Log (gameObject+" parent "+parentNode);
-		if (isActive) {
+		/*if (isActive) {
 			Activate ();	
 		} else {
 			this.enabled = false;
-		}
+		}*/
 	}
 
 	public virtual void Activate (){
