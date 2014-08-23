@@ -118,8 +118,8 @@ public class Robot : MonoBehaviour {
 	private float wanderAngularVelo;
 	
 	private const float MAX_WANDER_VELO = 0.1f;
-	private const float CENTER_OFFSET = 1f;
-	private const float WANDER_RADIUS = 0.60f;
+	private const float CENTER_OFFSET = 0.5f;
+	private const float WANDER_RADIUS = 0.30f;
 	
 	//debugValue
 	private int segments = 50;
@@ -131,7 +131,7 @@ public class Robot : MonoBehaviour {
 		Vector2 currentVelocity = rigidbody2D.velocity;
 		Vector2 desiredVelocity = desiredPosition - currentPosition;
 		
-		Vector2 accel = (desiredVelocity - currentVelocity);
+		Vector2 accel = (desiredVelocity - currentVelocity)*Speed;
 		rigidbody2D.AddForceAtPosition (accel, calculateCircleCenter ());
 		
 		//Owner.rigidbody2D.velocity = desiredVelocity;

@@ -37,7 +37,8 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	public List<TaskAttribute> attributes = new List<TaskAttribute>(); 
 
 	public virtual void Awake(){
-		gameObject.AddMissingComponent<StoreInformation> ();
+		StoreInformation SI = gameObject.AddMissingComponent<StoreInformation> ();
+
 		if(transform.parent != null)
 			parentNode = transform.parent.GetComponent<BehaviourNode> ();
 		//if (LevelSerializer.IsDeserializing)

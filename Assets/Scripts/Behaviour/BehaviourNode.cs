@@ -38,7 +38,9 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 
 	public virtual void Awake () {
 		//Debug.Log ("*gähn*");
-		gameObject.AddMissingComponent<StoreInformation> ();
+
+		StoreInformation SI = gameObject.AddMissingComponent<StoreInformation> ();
+
 		//if (LevelSerializer.IsDeserializing)
 		//	return;
 		childNodes = new List<LeafNode>();
