@@ -26,7 +26,7 @@ public class TreeSaveManager : MonoBehaviour {
 	}
 
 	public void AddSave(string name){
-		if (!savedTrees.Contains (name)) {
+		if (!savedTrees.Exists(delegate(string n){return name.Equals(n);})) {
 			savedTrees.Add(name);
 		}
 	}

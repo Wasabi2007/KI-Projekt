@@ -10,12 +10,18 @@ public class UIList : MonoBehaviour {
 
 	public UITable table;
 
+	private int count = 0;
+	private bool needReposition = true;
+
 	void Awake(){
 		table = GetComponent<UITable> ();
 	}
 
 	public void InitList(){
+		count = 0;
+		needReposition = true;
 		table.transform.DestroyChildren ();
+		table.Reposition ();
 		List<string> trees = TreeSaveManager.getTreeSaveManager ().savedTrees;
 		foreach (string tree in trees) {
 			GameObject go = (GameObject)GameObject.Instantiate(ItemPrefab.gameObject);
@@ -37,6 +43,10 @@ public class UIList : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		count++;
+		if (needReposition && count > 2) {
+			needReposition = false;
+			table.Reposition();		
+		}
 	}
 }
