@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 [SerializeAll]
 public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
+
 	[DoNotSerialize]
 	private bool isActive = false;
 
@@ -19,8 +20,12 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 		set { 	parentNode.childNodes.Remove(this); 
 			parentNode.childNodes.Insert(Mathf.Clamp(value,0,parentNode.childNodes.Count),this); 
 			transform.SetSiblingIndex (value);
+			SaveIndex = value;
 		} 
 	}
+
+	public int SaveIndex = 0;
+
 	[DoNotSerialize]
 	private BehaviourTree tree;
 	[DoNotSerialize]
@@ -81,5 +86,10 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 
 
 	public virtual void Update(){
-		}
+	}
+
+	public virtual void OnDeserialized(){
+		Index = SaveIndex;
+		//Debug.Log ("Miep");
+	}
 }

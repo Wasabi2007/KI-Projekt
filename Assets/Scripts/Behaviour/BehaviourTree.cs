@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BehaviourTree : MonoBehaviour {
+public class BehaviourTree : MonoBehaviour,TreeSaveManager.TreeChangeObserver {
 
 	public GameObject Owner;
 	public BehaviourNode TreeRoot;
@@ -26,10 +26,14 @@ public class BehaviourTree : MonoBehaviour {
 	void Update () {
 		if (StartTree || StartAll) {
 			StartTree = false;
-			StartAll = false;
 			StartBehaviour();
 		}
 
+	}
+	void LateUpdate(){
+		if (StartAll) {
+			StartAll = false;
+		}
 	}
 
 	public void StartAllTrees(){
@@ -47,8 +51,14 @@ public class BehaviourTree : MonoBehaviour {
 		
 		LevelSerializer.LoadObjectTreeFromFile(FileName,loaded);
 		lastLoadedTree = FileName;
+		TreeSaveManager.getTreeSaveManager ().AddObserver (FileName, this);
+
 		//LevelSerializer.Collect ();
 		//LevelSerializer.LoadObjectTreeFromFile("Pah.dat");
+	}
+
+	public virtual void updateTree(){
+		LoadTree (lastLoadedTree);
 	}
 
 	private void loaded(LevelLoader obj){
@@ -57,7 +67,7 @@ public class BehaviourTree : MonoBehaviour {
 			GameObject.Destroy(eoi);
 		}*/
 		GameObject go = (GameObject)GameObject.Instantiate (obj.rootObject);
-		obj.rootObject.SetActive (false);
+		//obj.rootObject.SetActive (false);
 		TreeRoot = go.GetComponent<BehaviourNode> ();
 		TreeRoot.Tree = this;
 		TreeRoot.ReCaptureChildsAndParents ();

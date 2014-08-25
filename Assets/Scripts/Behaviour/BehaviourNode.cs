@@ -18,11 +18,19 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	[DoNotSerialize]
 	public int Index{ 
 		get { 	return (isRoot?0:transform.GetSiblingIndex ()); } 
-		set { 	parentNode.childNodes.Remove(this); 
+		set {if(!isRoot){
+				parentNode.childNodes.Remove(this); 
 				parentNode.childNodes.Insert(Mathf.Clamp(value,0,parentNode.childNodes.Count),this); 
 				transform.SetSiblingIndex (value);
+				SaveIndex = value;
+			}else{
+				SaveIndex = 0;
+			}
 		} 
 	}
+
+	public int SaveIndex = 0;
+
 	[DoNotSerialize]
 	private BehaviourTree tree;
 	[DoNotSerialize]
@@ -100,7 +108,12 @@ public abstract class BehaviourNode : MonoBehaviour,ParentNode,LeafNode {
 	public abstract void ChildTerminated (BehaviourInterface child,bool result);
 	
 	// Update is called once per frame
-	public virtual void Update () {
+	public virtual void Update(){
 
+	}
+	
+	public virtual void OnDeserialized(){
+		Index = SaveIndex;
+		//Debug.Log ("Miep");
 	}
 }

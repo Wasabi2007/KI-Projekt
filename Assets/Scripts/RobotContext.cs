@@ -11,7 +11,11 @@ public class RobotContext : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Kontext.items = TreeSaveManager.getTreeSaveManager().savedTrees;
-		Kontext.value = Kontext.items [0];
+		if (Kontext.items.Count > 0) {
+						Kontext.value = Kontext.items [0];
+				} else {
+			Kontext.value = "";
+		}
 
 	}
 
