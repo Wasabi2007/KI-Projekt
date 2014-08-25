@@ -4,21 +4,21 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Robot : MonoBehaviour {
 
-	public int HP = 100;
-	public float FireRate = 2f; // 2 Projektile/sec?!
-	public float Damage = 2;
-	public int Ammo = 100;
+	public float HP;
+	public float FireRate;
+	public float Damage;
+	public int Ammo;
 	public float Speed;
 
-	public float Attdist = 40f; // Angriffsdistanz
-	public float Sightdist = 60f; // Sichtweite
+	public float Attdist = 20f; // Angriffsdistanz
+	public float Sightdist = 40f; // Sichtweite
 
 	public GameObject Target;
 
-	public GameObject BulletPrefab;
-	public float lastFireTime = 0;
-
 	public SteeringType steeringtype = SteeringType.Wander;
+	public GameObject BulletPrefab;
+
+	public float lastFireTime;
 
 	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
 	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
@@ -50,7 +50,6 @@ public class Robot : MonoBehaviour {
 			faceOnlySteering();
 			break;
 		}
-	
 		if ( Time.time - lastFireTime >= FireRate) {
 			if(Ammo > 0)
 			{
@@ -59,7 +58,7 @@ public class Robot : MonoBehaviour {
 				Ammo--;
 			}
 		}
-
+	
 	}
 
 	void OnDrawGizmos(){
@@ -85,6 +84,33 @@ public class Robot : MonoBehaviour {
 				}
 		
 	}
+	
+	private void faceOnlySteering(){
+	
+		Vector2 currentPosition = transform.position;
+		Vector2 currentVelocity = calculateCircleCenter() - currentPosition;
+		
+		Vector2 enemyPosition   = Target.transform.position;
+		Vector2 desiredVelocity = enemyPosition-currentPosition;
+		
+		// move away from enemy with maximum velocity
+		/*Vector2 accel = (desiredVelocity - currentVelocity);
+		accel.Normalize();
+		accel *= Speed;*/
+		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(desiredVelocity.y,desiredVelocity.x);
+		
+		//rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MoveRotation (desiredRotation);
+
+		//Debug.Log ("<" + currentVelocity.normalized + "," + desiredVelocity.normalized + "> = " + Vector2.Dot (currentVelocity.normalized, desiredVelocity.normalized));
+		//rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1f,1f));
+		//rigidbody2D.angularVelocity = (rigidbody2D.angularD
+
+		//Debug.Log (rigidbody2D.angularVelocity);
+		//rigidbody2D.velocity = accel;
+	
+	
+	}
 
 	#region FleeSteering
 	private void fleeSteering(){
@@ -97,12 +123,23 @@ public class Robot : MonoBehaviour {
 		// move away from enemy with maximum velocity
 		Vector2 accel = (desiredVelocity - currentVelocity);
 		accel.Normalize();
-		accel *= Speed;
+		accel *= acc;
 		
-		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
+		Velocity += accel;
+		if(Velocity.sqrMagnitude > Speed*Speed){
+			Velocity = Velocity.normalized*Speed;
+		}
+		Vector2 targetPosition = (rigidbody2D.position + Velocity);	
+		
+		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
+		
+		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MoveRotation (desiredRotation);
+		
+		//rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
 		
 		
-		rigidbody2D.velocity = accel;
+		//rigidbody2D.velocity = accel;
 	}
 	#endregion
 
@@ -117,43 +154,26 @@ public class Robot : MonoBehaviour {
 		// move away from enemy with maximum velocity
 		Vector2 accel = (desiredVelocity - currentVelocity);
 		accel.Normalize();
-		accel *= Speed;
+		accel *= acc;
+
+		Velocity += accel;
+		if(Velocity.sqrMagnitude > Speed*Speed){
+			Velocity = Velocity.normalized*Speed;
+		}
+		Vector2 targetPosition = (rigidbody2D.position + Velocity);	
 		
+		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
+		
+		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MoveRotation (desiredRotation);
+
 		//Debug.Log ("<" + currentVelocity.normalized + "," + desiredVelocity.normalized + "> = " + Vector2.Dot (currentVelocity.normalized, desiredVelocity.normalized));
-		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
+		//rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
 		
 		
-		rigidbody2D.velocity = accel;
-		//Debug.Log ("bitte feuern!");
-
-	
-
-
+		//rigidbody2D.velocity = accel;
 	}
 	#endregion
-
-	private void faceOnlySteering(){
-	
-		Vector2 currentPosition = transform.position;
-		Vector2 currentVelocity = calculateCircleCenter() - currentPosition;
-		
-		Vector2 enemyPosition   = Target.transform.position;
-		Vector2 desiredVelocity = enemyPosition-currentPosition;
-		
-		// move away from enemy with maximum velocity
-		/*Vector2 accel = (desiredVelocity - currentVelocity);
-		accel.Normalize();
-		accel *= Speed;*/
-		
-		//Debug.Log ("<" + currentVelocity.normalized + "," + desiredVelocity.normalized + "> = " + Vector2.Dot (currentVelocity.normalized, desiredVelocity.normalized));
-		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1f,1f));
-		//rigidbody2D.angularVelocity = (rigidbody2D.angularD
-
-		//Debug.Log (rigidbody2D.angularVelocity);
-		//rigidbody2D.velocity = accel;
-	
-	
-	}
 
 	#region WanderSteering
 	
@@ -167,21 +187,35 @@ public class Robot : MonoBehaviour {
 	//debugValue
 	private int segments = 50;
 
+	private Vector2 Velocity = Vector2.zero;
+	private float angularVelocity = 0;
+	private float acc = 0.0001f;
+
 	private void wanderSteering(){
-		Vector2 currentPosition = transform.position;
+		Vector2 currentPosition = rigidbody2D.position;
 		Vector2 desiredPosition = calculateTargetPosition();
 		
-		Vector2 currentVelocity = rigidbody2D.velocity;
+		Vector2 currentVelocity = Velocity;
 		Vector2 desiredVelocity = desiredPosition - currentPosition;
+
 		
-		Vector2 accel = (desiredVelocity - currentVelocity)*Speed;
-		rigidbody2D.AddForceAtPosition (accel, calculateCircleCenter ());
-		
-		//Owner.rigidbody2D.velocity = desiredVelocity;
-		//Debug.Log(Vector2.Dot(currentVelocity,desiredVelocity));
-		//Debug.Log(Mathf.Acos(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized)));
-		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1f,1f));
-		
+		Vector2 accel = (desiredVelocity - currentVelocity);
+		accel.Normalize();
+		accel *= acc;
+
+		float currentRotation = rigidbody2D.rotation;
+
+		Velocity += accel;
+		if(Velocity.sqrMagnitude > Speed*Speed){
+			Velocity = Velocity.normalized*Speed;
+		}
+		Vector2 targetPosition = (rigidbody2D.position + Velocity);	
+
+		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
+
+		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MoveRotation (desiredRotation);
+		//Debug.Log (rigidbody2D.angularVelocity);
 		// move the circle point randomly on the circular path
 		// calculate a randomized acceleration for the circle point
 		float wanderAngularAccel = (0.2f* Random.value - 0.1f);
@@ -217,7 +251,7 @@ public class Robot : MonoBehaviour {
 		
 	}
 	#endregion
-
+	
 	#region fireBullet
 	void fireBullet()
 	{

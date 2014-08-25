@@ -6,7 +6,14 @@ using System.Collections.Generic;
 [SerializeAll]
 public class TreeSaveManager : MonoBehaviour {
 
+	public interface TreeChangeObserver{
+		void updateTree();
+	}
+
 	public List<string> savedTrees = new List<string>();
+
+	[DoNotSerialize]
+	Dictionary<string,List<TreeChangeObserver>> trees = new Dictionary<string, List<TreeChangeObserver>> ();
 
 	private static TreeSaveManager singleton;
 
@@ -25,10 +32,33 @@ public class TreeSaveManager : MonoBehaviour {
 		}
 	}
 
-	public void AddSave(string name){
+	public void SaveTree(string name,GameObject treeRoot){
 		if (!savedTrees.Exists(delegate(string n){return name.Equals(n);})) {
 			savedTrees.Add(name);
 		}
+		LevelSerializer.SaveObjectTreeToFile (name, treeRoot);
+		if (trees.ContainsKey (name)) {
+						TreeChangeObserver[] toUpdate = trees [name].ToArray ();
+						foreach (TreeChangeObserver observer in  toUpdate) {
+								observer.updateTree ();
+						}
+				}
+	}
+
+	public void AddObserver(string name, TreeChangeObserver observer){
+		foreach (KeyValuePair<string,List<TreeChangeObserver>> kvp in trees) {
+			if(kvp.Value.Contains(observer)){
+				kvp.Value.Remove(observer);
+			}
+		}
+
+		if (!trees.ContainsKey (name)) {
+			trees.Add (name, new List<TreeChangeObserver> ());		
+		} 
+		if(!trees[name].Contains(observer)){
+			trees [name].Add (observer);
+		}
+
 	}
 
 	// Use this for initialization

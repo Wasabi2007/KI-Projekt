@@ -19,6 +19,10 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 			Load = false;
 			LoadTree("Pah.dat");
 		}
+
+		if (TreeRoot != null && !TreeRoot.gameObject.activeSelf) {
+			TreeRoot.gameObject.SetActive(true);
+		}
 	}
 
 	public void NewTree(string RootClass){
@@ -39,12 +43,12 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 	public void SaveTree(string FileName){
 		if (FileName.Length == 0)
 			return;
-		
-		LevelSerializer.SaveObjectTreeToFile (FileName, TreeRoot.gameObject);
-		TreeSaveManager.getTreeSaveManager ().savedTrees.Add (FileName);
+
+		TreeSaveManager.getTreeSaveManager ().SaveTree (FileName,TreeRoot.gameObject);
 		//Debug.Log ("Saved: " + FileName);
 	}
 	
+
 	public override void LoadTree(string FileName){
 		if (FileName.Length == 0)
 			return;
@@ -56,13 +60,14 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 			TreeVis.getTreeVis ().TreeRoot = null;
 		}
 		
-		LevelSerializer.LoadObjectTreeFromFile(FileName,loaded);
+		LevelSerializer.LoadObjectTreeFromFile(FileName,loaded2);
 		lastLoadedTree = FileName;
+		TreeSaveManager.getTreeSaveManager ().AddObserver (FileName, this);
 		//LevelSerializer.Collect ();
 		//LevelSerializer.LoadObjectTreeFromFile("Pah.dat");
 	}
 	
-	private void loaded(LevelLoader obj){
+	private void loaded2(LevelLoader obj){
 		//obj.DontDelete = true;
 		TreeRoot = obj.rootObject.GetComponent<BehaviourNode> ();
 		TreeRoot.Tree = this;

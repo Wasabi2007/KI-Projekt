@@ -17,7 +17,7 @@ public class TreeSaveInit : MonoBehaviour {
 		TreeSaveManager.deletSingleton ();
 		try{
 			LevelSerializer.LoadObjectTreeFromFile(SavedFileName);
-		}catch(UnityException e){
+		}catch{
 			TreeSaveManager.getTreeSaveManager();	
 		}
 	}
