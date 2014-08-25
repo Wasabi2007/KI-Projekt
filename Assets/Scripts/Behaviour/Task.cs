@@ -54,10 +54,10 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 	public virtual void Start () {
 		
 		parentNode = transform.parent.GetComponent<BehaviourNode> ();
-		
-		if (isActive) {
-			Activate ();	
-		} else {
+	}
+
+	public virtual void OnEnable() {
+		if (!isActive) {
 			this.enabled = false;
 		}
 	}

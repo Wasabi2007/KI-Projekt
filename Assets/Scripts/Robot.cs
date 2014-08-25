@@ -4,22 +4,24 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Robot : MonoBehaviour {
 
-	public float HP;
-	public float FireRate;
-	public float Damage;
-	public int Ammo;
+	public int HP = 100;
+	public float FireRate = 2f; // 2 Projektile/sec?!
+	public float Damage = 2;
+	public int Ammo = 100;
 	public float Speed;
 
-	public float Attdist = 20f; // Angriffsdistanz
-	public float Sightdist = 40f; // Sichtweite
+	public float Attdist = 40f; // Angriffsdistanz
+	public float Sightdist = 60f; // Sichtweite
 
 	public GameObject Target;
+
+	public GameObject BulletPrefab;
+	public float lastFireTime = 0;
 
 	public SteeringType steeringtype = SteeringType.Wander;
 
 	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
 	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
-	public BattleStatus enemyBattleStatus = BattleStatus.NotInBattle;
 
 	// Use this for initialization
 	void Start () {
@@ -43,8 +45,21 @@ public class Robot : MonoBehaviour {
 			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.angularVelocity = 0f;
 			break;
+		case SteeringType.FaceOnly:
+			//velocity unwichtig
+			faceOnlySteering();
+			break;
 		}
 	
+		if ( Time.time - lastFireTime >= FireRate) {
+			if(Ammo > 0)
+			{
+				fireBullet ();
+				lastFireTime = Time.time;
+				Ammo--;
+			}
+		}
+
 	}
 
 	void OnDrawGizmos(){
@@ -109,8 +124,36 @@ public class Robot : MonoBehaviour {
 		
 		
 		rigidbody2D.velocity = accel;
+		//Debug.Log ("bitte feuern!");
+
+	
+
+
 	}
 	#endregion
+
+	private void faceOnlySteering(){
+	
+		Vector2 currentPosition = transform.position;
+		Vector2 currentVelocity = calculateCircleCenter() - currentPosition;
+		
+		Vector2 enemyPosition   = Target.transform.position;
+		Vector2 desiredVelocity = enemyPosition-currentPosition;
+		
+		// move away from enemy with maximum velocity
+		/*Vector2 accel = (desiredVelocity - currentVelocity);
+		accel.Normalize();
+		accel *= Speed;*/
+		
+		//Debug.Log ("<" + currentVelocity.normalized + "," + desiredVelocity.normalized + "> = " + Vector2.Dot (currentVelocity.normalized, desiredVelocity.normalized));
+		rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1f,1f));
+		//rigidbody2D.angularVelocity = (rigidbody2D.angularD
+
+		//Debug.Log (rigidbody2D.angularVelocity);
+		//rigidbody2D.velocity = accel;
+	
+	
+	}
 
 	#region WanderSteering
 	
@@ -172,6 +215,38 @@ public class Robot : MonoBehaviour {
 		// the point on the circle is our desired position
 		return center + circlePoint;
 		
+	}
+	#endregion
+
+	#region fireBullet
+	void fireBullet()
+	{
+		bool flag = false;
+
+		GameObject bla = (GameObject)GameObject.Instantiate (BulletPrefab);
+		Bullet BulletComp = bla.GetComponent<Bullet>();
+
+		//Fuer Kollisionsabfrage
+		BulletComp.BulletOwner = this;
+
+		bla.transform.parent = this.transform.parent;
+		bla.transform.localScale = Vector3.one;
+		bla.transform.position = this.transform.position;
+		Debug.Log (bla.transform.position);
+
+		Vector2 currentPosition = this.transform.position;
+		Vector2 currentVelocity = this.rigidbody2D.velocity;
+
+		Vector2 desiredPosition = Target.transform.position;
+		
+		//Vector2 currentVelocity = rigidbody2D.velocity;
+		Vector2 desiredVelocity = desiredPosition - currentPosition;
+
+		BulletComp.Direction = desiredVelocity;
+		bla.rigidbody2D.MoveRotation(Mathf.Rad2Deg*Mathf.Atan2(desiredVelocity.y,desiredVelocity.x));
+		
+		//BulletComp.Direction.normalized;
+
 	}
 	#endregion
 }

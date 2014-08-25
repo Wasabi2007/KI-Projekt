@@ -157,10 +157,14 @@ MonoBehaviour:
   thumb: {fileID: 400004}
   mBG: {fileID: 11400006}
   mFG: {fileID: 11400004}
-  mValue: .515514135
+  mValue: .514814973
   mFill: 0
   numberOfSteps: 0
   onChange:
+  - mTarget: {fileID: 0}
+    mMethodName: OnScrollBar
+    mParameters: []
+    oneShot: 0
   - mTarget: {fileID: 0}
     mMethodName: OnScrollBar
     mParameters: []
