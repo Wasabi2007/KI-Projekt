@@ -13,6 +13,7 @@ public class WaitTask : Task {
 	{
 		base.Awake ();
 		waitTimeTa = addAttribute ("WaitTime",TaskAttributeType.FLOAT,WaitTime.ToString(), "setWaitTime");
+		info = "Wait:"+WaitTime+" sec";
 	}
 
 	public void setWaitTime(Object obj){
@@ -20,12 +21,6 @@ public class WaitTask : Task {
 		WaitTime = float.Parse(input.value);
 		info = "Wait:"+WaitTime+" sec";
 		waitTimeTa.Value = WaitTime.ToString ();
-	}
-
-	public override void Start ()
-	{
-		base.Start ();
-		info = "Wait:"+WaitTime+" sec";
 	}
 
 	public override void Activate ()

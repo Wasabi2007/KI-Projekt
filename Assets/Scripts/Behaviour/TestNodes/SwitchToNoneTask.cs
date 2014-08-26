@@ -4,9 +4,11 @@ using System.Collections;
 public class SwitchToNoneTask : Task {
 	
 	// Use this for initialization
-	void Start () {
-		base.Start ();
-		info = "Switch Steering to None";
+
+	public override void Awake ()
+	{
+		base.Awake ();
+		info = "Switch to None-Task";
 	}
 
 	public override void Activate ()

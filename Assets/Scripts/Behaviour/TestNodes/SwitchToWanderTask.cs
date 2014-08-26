@@ -6,14 +6,9 @@ public class SwitchToWanderTask : Task {
 	public override void Awake ()
 	{
 		base.Awake ();
-	}
-	
-	public override void Start ()
-	{
-		base.Start ();
 		info = "Set Steering to Wander";
 	}
-	
+		
 	public override void Activate ()
 	{
 		base.Activate ();

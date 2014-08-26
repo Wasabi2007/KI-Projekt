@@ -7,10 +7,13 @@ public class OutputTask : Task {
 
 	private TaskAttribute messageTa;
 
+
+
 	public override void Awake ()
 	{
 		base.Awake ();
 		messageTa = addAttribute ("Message",TaskAttributeType.STRING,Message, "setMessage");
+		info = "Out:" + Message;
 	}
 
 	public void setMessage(Object obj){
@@ -18,12 +21,6 @@ public class OutputTask : Task {
 		Message = input.value;
 		info = "Out:"+Message;
 		messageTa.Value = Message;
-	}
-
-	public override void Start ()
-	{
-		base.Start ();
-		info = "Out:"+Message;
 	}
 
 	public override void Activate ()

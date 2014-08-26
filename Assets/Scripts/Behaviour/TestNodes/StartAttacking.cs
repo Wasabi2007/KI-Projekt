@@ -4,9 +4,12 @@ using System.Collections;
 public class StartAttacking : Task {
 
 	// Use this for initialization
-	void Start () {
-	
+	public override void Awake ()
+	{
+		base.Awake ();
+		info = "Start Attacking";
 	}
+
 	public override void Activate ()
 	{
 		base.Activate ();

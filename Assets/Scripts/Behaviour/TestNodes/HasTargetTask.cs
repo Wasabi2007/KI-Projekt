@@ -6,9 +6,14 @@ public class HasTargetTask : Task {
 	public bool TerminateWith = true;
 
 	// Use this for initialization
-	void Start () {
-		
+
+	public override void Awake ()
+	{
+		base.Awake ();
+		info = "Robot has a target";
 	}
+
+
 	public override void Activate ()
 	{
 		base.Activate ();
@@ -22,14 +27,6 @@ public class HasTargetTask : Task {
 	void Update () {
 		base.Update ();
 
-		/*if (Owner.GetComponent<Robot> ().Target == null) {	
-						Debug.Log ("Robot has no Target");
-						TerminateWith = false;
-				}
-
-		if(TerminateWith == true)
-			Debug.Log ("Robot has a Target");*/
-		
 		parentNode.ChildTerminated (this, TerminateWith);
 	}
 }

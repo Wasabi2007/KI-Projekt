@@ -8,12 +8,6 @@ public class SwitchToFleeTask : Task {
 	public override void Awake ()
 	{
 		base.Awake ();
-	}
-
-	
-	public override void Start ()
-	{
-		base.Start ();
 		info = "Set Steering To Flee";
 	}
 	

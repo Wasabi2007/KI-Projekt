@@ -50,14 +50,18 @@ public class Robot : MonoBehaviour {
 			faceOnlySteering();
 			break;
 		}
-		if ( Time.time - lastFireTime >= FireRate) {
-			if(Ammo > 0)
-			{
-				fireBullet ();
-				lastFireTime = Time.time;
-				Ammo--;
-			}
-		}
+
+		switch (myBattleStatus) {
+				case BattleStatus.AttackingFar:
+						if (Time.time - lastFireTime >= FireRate) {
+								if (Ammo > 0) {
+										fireBullet ();
+										lastFireTime = Time.time;
+										Ammo--;
+								}
+						}
+				break;
+				}
 	
 	}
 
@@ -86,7 +90,8 @@ public class Robot : MonoBehaviour {
 	}
 	
 	private void faceOnlySteering(){
-	
+
+
 		Vector2 currentPosition = transform.position;
 		Vector2 currentVelocity = calculateCircleCenter() - currentPosition;
 		
