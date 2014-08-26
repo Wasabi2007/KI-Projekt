@@ -679,7 +679,7 @@ Transform:
   m_PrefabInternal: {fileID: 690567173}
   m_GameObject: {fileID: 154219368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -512.5, y: 0, z: 0}
+  m_LocalPosition: {x: -473.000061, y: 0, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children:
   - {fileID: 2002074237}
@@ -879,13 +879,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 1775
+  mWidth: 1696
   mHeight: 50
   mDepth: -3
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 35.5
+  aspectRatio: 33.9199982
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   Attdist: 20
   Sightdist: 40
   Target: {fileID: 1610082826}
-  steeringtype: 3
+  steeringtype: 4
   BulletPrefab: {fileID: 100000, guid: 3032316084d7a9942a86e65f581287c3, type: 2}
   lastFireTime: 0
   myBattleStatus: 6
@@ -2071,7 +2071,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 812.5
+      value: 773.000061
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3647,7 +3647,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -512.5
+      value: -473.000061
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3892,7 +3892,7 @@ Transform:
   m_PrefabInternal: {fileID: 360510787}
   m_GameObject: {fileID: 722932339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 812.5, y: 0, z: 0}
+  m_LocalPosition: {x: 773.000061, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1477865908}
@@ -4915,7 +4915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -662.5
+      value: -623.000061
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5106,7 +5106,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 963637637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 887.492432, y: -25, z: 0}
+  m_LocalPosition: {x: 847.820251, y: -25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 17588671}
@@ -6113,7 +6113,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1367280678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2031.62524, y: -2052.43237, z: 0}
+  m_LocalPosition: {x: 2152.11401, y: -2051.46753, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1998549749}
@@ -6140,7 +6140,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1975, y: 968}
+  m_Size: {x: 1896, y: 968}
   m_Center: {x: 0, y: 0}
 --- !u!114 &1367280682
 MonoBehaviour:
@@ -6172,13 +6172,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: .160784319}
   mPivot: 4
-  mWidth: 1975
+  mWidth: 1896
   mHeight: 968
   mDepth: 0
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.04028916
+  aspectRatio: 1.95867765
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -6201,7 +6201,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -812.5
+      value: -773.000061
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6980,7 +6980,7 @@ MonoBehaviour:
   Attdist: 20
   Sightdist: 40
   Target: {fileID: 0}
-  steeringtype: 2
+  steeringtype: 4
   BulletPrefab: {fileID: 100000, guid: 3032316084d7a9942a86e65f581287c3, type: 2}
   lastFireTime: 0
   myBattleStatus: 6
@@ -7080,7 +7080,7 @@ Transform:
   m_PrefabInternal: {fileID: 1405813128}
   m_GameObject: {fileID: 1622050892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -812.5, y: 0, z: 0}
+  m_LocalPosition: {x: -773.000061, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1867247007}
@@ -7649,6 +7649,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 597703132}
     m_Modifications:
+    - target: {fileID: 11400004, guid: 5736c0ac397f2594e81cf3e456fa76d0, type: 2}
+      propertyPath: items.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 11400014, guid: 5736c0ac397f2594e81cf3e456fa76d0, type: 2}
       propertyPath: onClick.Array.size
       value: 1
@@ -7744,6 +7748,10 @@ Prefab:
     - target: {fileID: 11400024, guid: 5736c0ac397f2594e81cf3e456fa76d0, type: 2}
       propertyPath: mDepth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 5736c0ac397f2594e81cf3e456fa76d0, type: 2}
+      propertyPath: items.Array.data[2]
+      value: ParralelNode
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6500000, guid: 5736c0ac397f2594e81cf3e456fa76d0, type: 2}
@@ -8195,6 +8203,7 @@ MonoBehaviour:
   items:
   - Selector
   - Sequence
+  - ParralelNode
   padding: {x: 4, y: 4}
   textColor: {r: 0, g: 0, b: 0, a: .839215696}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -8586,7 +8595,7 @@ Transform:
   m_PrefabInternal: {fileID: 910716080}
   m_GameObject: {fileID: 1910503809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -662.5, y: 0, z: 0}
+  m_LocalPosition: {x: -623.000061, y: 0, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children:
   - {fileID: 140813165}
@@ -9056,11 +9065,11 @@ MonoBehaviour:
   startingRenderQueue: 3001
   mAlpha: 1
   mClipping: 3
-  mClipRange: {x: -175, y: -25, z: 1424.98486, w: 718}
+  mClipRange: {x: -174.999985, y: -25, z: 1345.6405, w: 718}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 1
   mSortingOrder: 0
-  mClipOffset: {x: 2031.62512, y: -2052.43237}
+  mClipOffset: {x: 2152.11401, y: -2051.46753}
 --- !u!4 &1998549749
 Transform:
   m_ObjectHideFlags: 0
@@ -9068,7 +9077,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1998549745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2031.62512, y: 2052.43237, z: 0}
+  m_LocalPosition: {x: -2152.11401, y: 2051.46753, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2049078017}
@@ -9645,15 +9654,74 @@ MonoBehaviour:
     Prefab: {fileID: 100006, guid: 252aa392151331642aeb88d60cc576ad, type: 2}
   - Class: .*Task
     Prefab: {fileID: 100006, guid: e5316b70a91cbce48bfd4e2d3256512d, type: 2}
+  - Class: UtilFail
+    Prefab: {fileID: 100006, guid: fdba8cb2229069b41922a0dde78538bb, type: 2}
+  - Class: ParralelNode
+    Prefab: {fileID: 100006, guid: a9047af569941a04798e7db3889a510e, type: 2}
   Classes:
   - Display: Debug Out
+    Tags: []
     Class: OutputTask
   - Display: Wait
+    Tags: []
     Class: WaitTask
   - Display: Selector
+    Tags: []
     Class: Selector
   - Display: Sequence
+    Tags: []
     Class: Sequence
+  - Display: Parallel Node
+    Tags: []
+    Class: ParralelNode
+  - Display: Paralle lNode
+    Tags: []
+    Class: ParralelNode
+  - Display: DistanceLessThanTask
+    Tags: []
+    Class: DistanceLessThanTask
+  - Display: DistanceMoreThenTask
+    Tags: []
+    Class: DistanceMoreThenTask
+  - Display: FindNextTargetTask
+    Tags: []
+    Class: FindNextTargetTask
+  - Display: HasNoTargetTask
+    Tags: []
+    Class: HasNoTargetTask
+  - Display: HasTargetTask
+    Tags: []
+    Class: HasTargetTask
+  - Display: HPEqualsTask
+    Tags: []
+    Class: HPEqualsTask
+  - Display: HPLessThanTask
+    Tags: []
+    Class: HPLessThanTask
+  - Display: HPMoreThanTask
+    Tags: []
+    Class: HPMoreThanTask
+  - Display: OutputTask
+    Tags: []
+    Class: OutputTask
+  - Display: StartAttackingTask
+    Tags: []
+    Class: StartAttackingTask
+  - Display: StopAttackingTask
+    Tags: []
+    Class: StopAttackingTask
+  - Display: SwitchToFleeTask
+    Tags: []
+    Class: SwitchToFleeTask
+  - Display: SwitchToNoneTask
+    Tags: []
+    Class: SwitchToNoneTask
+  - Display: SwitchToSeekTask
+    Tags: []
+    Class: SwitchToSeekTask
+  - Display: SwitchToWanderTask
+    Tags: []
+    Class: SwitchToWanderTask
   SelectedNode: {fileID: 0}
   recalcPos: 0
 --- !u!4 &2049078017

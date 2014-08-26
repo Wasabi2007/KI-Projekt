@@ -78,7 +78,7 @@ public class AttributeEditor : MonoBehaviour {
 				go.transform.localScale = Vector3.one;
 				ncnUI.Node = bne;
 				ncnUI.ae = this;
-				ncnUI.initList(treevis.Classes);
+				ncnUI.initList();
 			}
 		}
 		delayedReposition = true;

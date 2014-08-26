@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartAttacking : Task {
+public class StartAttackingTask : Task {
 
 	// Use this for initialization
 	void Start () {

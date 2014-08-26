@@ -32,8 +32,12 @@ public class ParralelNode : BehaviourNode {
 			}
 		}
 
-		if(childReturns >= childNodes.Count){
+		if(!isRoot && childReturns >= childNodes.Count){
 			parentNode.ChildTerminated(this,true);
+		}
+
+		if (isRoot) {
+			Deactivate();
 		}
 		
 	}

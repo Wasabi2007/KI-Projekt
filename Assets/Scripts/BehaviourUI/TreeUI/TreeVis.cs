@@ -14,6 +14,7 @@ public class TreeVis : MonoBehaviour {
 	[System.Serializable]
 	public class NodeAddBinding{
 		public string Display;
+		public List<string> Tags;
 		public string Class;
 	}
 
@@ -107,6 +108,48 @@ public class TreeVis : MonoBehaviour {
 		}
 
 		return GameObject.CreatePrimitive(PrimitiveType.Cube);
+	}
+
+	public List<string> getFiltertClassListWithTags(params string[] tags){
+		List<string> ClassesFound = new List<string> ();
+
+		foreach (NodeAddBinding bind in Classes) {
+			if (tags.Length == 0 || (tags.Length == 1 && tags[0].Length == 0)) {
+				ClassesFound.Add (bind.Display);
+			}
+			else{
+				foreach (string tag in tags) {
+						if (bind.Tags.Exists (delegate(string n) {
+								return tag.Equals (n);
+						})) {
+								if (!ClassesFound.Exists (delegate(string n) {
+										return bind.Display.Equals (n);
+								})) {
+										ClassesFound.Add (bind.Display);
+								}
+						}
+				}
+			}
+		}
+		return ClassesFound;
+
+
+	}
+
+	public List<string> getFiltertClassListWithName(string name){
+		List<string> ClassesFound = new List<string> ();
+
+		foreach (NodeAddBinding bind in Classes) {
+			if (name.Length == 0) {
+				ClassesFound.Add (bind.Display);
+			}
+			else{
+				if(Regex.IsMatch(bind.Display,name)){
+					ClassesFound.Add (bind.Display);
+				}
+			}
+		}
+		return ClassesFound;	
 	}
 
 	public string getClassName(string Allias){
