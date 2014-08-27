@@ -590,6 +590,10 @@ MonoBehaviour:
     mMethodName: SetCurrentSelection
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 11400000}
+    mMethodName: addNode
+    mParameters: []
+    oneShot: 0
   mSelectedItem: 
   eventReceiver: {fileID: 0}
   functionName: 
