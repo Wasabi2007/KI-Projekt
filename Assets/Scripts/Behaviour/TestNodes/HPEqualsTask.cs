@@ -13,6 +13,7 @@ public class HPEqualsTask : Task {
 	public override void Awake ()
 	{
 		base.Awake ();
+		info = "HP is equal to:"+ health;
 		healthTa = addAttribute ("HP equals:",TaskAttributeType.FLOAT,health.ToString(), "setHP");
 	}
 	
@@ -21,12 +22,6 @@ public class HPEqualsTask : Task {
 		health = float.Parse(input.value);
 		info = "HP is equal to:"+ health;
 		healthTa.Value = health.ToString ();
-	}
-	
-	public override void Start ()
-	{
-		base.Start ();
-		info = "HP is equal to:"+ health;
 	}
 	
 	public override void Activate ()

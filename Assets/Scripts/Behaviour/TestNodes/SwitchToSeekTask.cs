@@ -6,14 +6,9 @@ public class SwitchToSeekTask : Task{
 	public override void Awake ()
 	{
 		base.Awake ();
-	}
-
-	public override void Start ()
-	{
-		base.Start ();
 		info = "Switch Steering to Seek";
 	}
-	
+
 	public override void Activate ()
 	{
 		base.Activate ();

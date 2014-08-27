@@ -13,6 +13,7 @@ public class DistanceLessThanTask : Task {
 	{
 		base.Awake ();
 		distanceTa = addAttribute ("Distance less than:",TaskAttributeType.FLOAT,distance.ToString(), "setDistance");
+		info = "Distance less than:";
 	}
 	
 	public void setDistance(Object obj){
@@ -21,12 +22,7 @@ public class DistanceLessThanTask : Task {
 		info = "Distance less than:"+ distance;
 		distanceTa.Value = distance.ToString ();
 	}
-	
-	public override void Start ()
-	{
-		base.Start ();
-		info = "Distance less than:"+distance;
-	}
+
 	
 	public override void Activate ()
 	{

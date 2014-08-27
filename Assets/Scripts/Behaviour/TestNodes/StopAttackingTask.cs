@@ -4,8 +4,11 @@ using System.Collections;
 public class StopAttackingTask : Task {
 
 	// Use this for initialization
-	void Start () {
-	
+
+	public override void Awake ()
+	{
+		base.Awake ();
+		info = "Stop Attacking";
 	}
 
 	public override void Activate ()
@@ -22,6 +25,9 @@ public class StopAttackingTask : Task {
 
 	// Update is called once per frame
 	void Update () {
-	
+		base.Update ();
+		Debug.Log ("Robot is in Attackmode");
+		
+		parentNode.ChildTerminated (this, true);
 	}
 }

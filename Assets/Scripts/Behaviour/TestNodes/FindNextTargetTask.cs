@@ -6,11 +6,13 @@ public class FindNextTargetTask : Task {
 	GameObject closest = null;
 
 	// Use this for initialization
-	void Start () {
-		base.Start ();
+
+	public override void Awake ()
+	{
+		base.Awake ();
 		info = "Find next Target";
 	}
-	
+
 	public override void Activate ()
 	{
 		base.Activate ();
@@ -20,8 +22,8 @@ public class FindNextTargetTask : Task {
 		GameObject[] targets;
 		targets = GameObject.FindGameObjectsWithTag("Robot");
 
-		float distance = Owner.GetComponent<Robot>().Sightdist;
-		Vector3 position = transform.position;
+		float distance = Mathf.Infinity;
+		Vector3 position = Owner.transform.position;
 		foreach (GameObject target in targets) {
 			if(target == Owner) continue;
 			Vector3 diff = target.transform.position - position;

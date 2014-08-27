@@ -13,6 +13,7 @@ public class HPMoreThanTask : Task {
 	{
 		base.Awake ();
 		healthTa = addAttribute ("HP more than:",TaskAttributeType.FLOAT,health.ToString(), "setHP");
+		info = "HP more than:"+ health;
 	}
 	
 	public void setHP(Object obj){
@@ -20,12 +21,6 @@ public class HPMoreThanTask : Task {
 		health = float.Parse(input.value);
 		info = "HP more than:"+ health;
 		healthTa.Value = health.ToString ();
-	}
-	
-	public override void Start ()
-	{
-		base.Start ();
-		info = "HP more than:"+ health;
 	}
 	
 	public override void Activate ()

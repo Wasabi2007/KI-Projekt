@@ -13,6 +13,7 @@ public class DistanceMoreThenTask : Task {
 	{
 		base.Awake ();
 		distanceTa = addAttribute ("Distance more than:",TaskAttributeType.FLOAT,distance.ToString(), "setDistance");
+		info = "Distance more than:";
 	}
 	
 	public void setDistance(Object obj){
@@ -22,12 +23,7 @@ public class DistanceMoreThenTask : Task {
 		distanceTa.Value = distance.ToString ();
 	}
 	
-	public override void Start ()
-	{
-		base.Start ();
-		info = "Distance more than:"+distance;
-	}
-	
+
 	public override void Activate ()
 	{
 		base.Activate ();

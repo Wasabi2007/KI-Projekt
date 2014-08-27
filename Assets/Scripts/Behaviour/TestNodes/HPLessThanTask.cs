@@ -13,6 +13,7 @@ public class HPLessThanTask : Task {
 	{
 		base.Awake ();
 		healthTa = addAttribute ("HP less than:",TaskAttributeType.FLOAT,health.ToString(), "setHP");
+		info = "HP less than:"+ health;
 	}
 	
 	public void setHP(Object obj){
@@ -20,12 +21,6 @@ public class HPLessThanTask : Task {
 		health = float.Parse(input.value);
 		info = "HP less than:"+ health;
 		healthTa.Value = health.ToString ();
-	}
-	
-	public override void Start ()
-	{
-		base.Start ();
-		info = "HP less than:"+ health;
 	}
 	
 	public override void Activate ()
