@@ -210,7 +210,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
   mWidth: 300
   mHeight: 150
@@ -390,7 +390,7 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {r: 1, g: 1, b: 1, a: 1}
+  from: {r: 0, g: 0, b: 0, a: 1}
   to: {r: .406896591, g: 1, b: 0, a: 1}
 --- !u!114 &11400016
 MonoBehaviour:

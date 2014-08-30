@@ -56,7 +56,7 @@
             {
                 v2f o;
                 o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-                o.color = _Color;//v.color;
+                o.color = _Color*v.color;
                 o.texcoord = v.texcoord;
 
                 float2 clipSpace =  o.vertex.xy / o.vertex.w;

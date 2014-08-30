@@ -61,6 +61,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   - 61: {fileID: 6100000}
+  - 114: {fileID: 11400014}
   m_Layer: 5
   m_Name: Decorator
   m_TagString: Untagged
@@ -220,7 +221,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
   mWidth: 300
   mHeight: 150
@@ -350,7 +351,11 @@ MonoBehaviour:
   pressedSprite: 
   disabledSprite: 
   pixelSnap: 0
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 11400014}
+    mMethodName: selectThisNode
+    mParameters: []
+    oneShot: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,8 +405,28 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {r: 1, g: 1, b: 1, a: 1}
+  from: {r: 0, g: 0, b: 0, a: 1}
   to: {r: .406896591, g: 1, b: 0, a: 1}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e1a846eed878341b025a4030a79f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  NV: {fileID: 0}
+  indexUpToggle: 0
+  indexDownToggle: 0
+  removeIt: 0
+  BNode: {fileID: 0}
+  addTestClass: 0
+  ClassName: Debug Out
+  infoLable: {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

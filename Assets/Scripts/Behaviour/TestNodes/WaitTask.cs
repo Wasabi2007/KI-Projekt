@@ -37,7 +37,7 @@ public class WaitTask : Task {
 	}
 	// Update is called once per frame
 	public override void Update () {
-		Robot MrRoboto = Owner.GetComponent<Robot> ();
+		//Robot MrRoboto = Owner.GetComponent<Robot> ();
 		info = "Wait:"+((this.stime + WaitTime)-Time.time)+" sec";
 			if (Time.time > this.stime + WaitTime) {
 				parentNode.ChildTerminated (this,TerminateWith);

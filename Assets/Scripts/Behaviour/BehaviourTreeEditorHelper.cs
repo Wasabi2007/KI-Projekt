@@ -10,7 +10,8 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void Update () {
+		base.Update();
 		if (Save) {
 			Save = false;
 			SaveTree("Pah.dat");

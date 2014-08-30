@@ -12,6 +12,9 @@ public class NodeEditor : MonoBehaviour {
 	public bool removeIt = false;
 
 	virtual public void indexUp(){
+		if (NV.parent == null)
+			return;
+
 		if(Node.Index - 1 >= 0)
 			transform.SetSiblingIndex (transform.GetSiblingIndex () - 1);
 
@@ -24,6 +27,9 @@ public class NodeEditor : MonoBehaviour {
 	}
 
 	virtual public void indexDown(){
+		if (NV.parent == null)
+						return;
+
 		if(Node.Index + 1 <= NV.parent.childs.Count)
 			transform.SetSiblingIndex (transform.GetSiblingIndex () + 1);
 
