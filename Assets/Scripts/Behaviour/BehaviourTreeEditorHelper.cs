@@ -41,12 +41,23 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 		TreeVis.getTreeVis ().LoadTree ();
 	}
 
+	public void SaveLoadedTree(){
+		SaveTree(lastLoadedTree);
+	}
+
 	public void SaveTree(string FileName){
 		if (FileName.Length == 0)
 			return;
 
 		TreeSaveManager.getTreeSaveManager ().SaveTree (FileName,TreeRoot.gameObject);
+		lastLoadedTree = FileName;
 		//Debug.Log ("Saved: " + FileName);
+	}
+
+	public void VisTree(BehaviourNode treeRoot){
+		TreeVis.getTreeVis ().DestroyTree ();
+		TreeVis.getTreeVis ().TreeRoot = treeRoot;
+		TreeVis.getTreeVis ().LoadTree ();
 	}
 	
 

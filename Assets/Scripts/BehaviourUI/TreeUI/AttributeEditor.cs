@@ -18,29 +18,22 @@ public class AttributeEditor : MonoBehaviour {
 	private NodeEditor oldSelectetNode;
 	private UITable table;
 
-	private bool delayedReposition = false;
-	private int delayedCount = 0;
-
 	public void Awake(){
 		table = GetComponent<UITable> ();
 	}
 
 	public void Update(){
 
-		if (delayedReposition) {
-			delayedCount++;
-			if(delayedCount > 2){
-				delayedReposition = false;
-				delayedCount = 0;
-				table.Reposition ();
-			}
-		}
 		if (treevis.SelectedNode != oldSelectetNode) {
 			oldSelectetNode = treevis.SelectedNode;	
 			UpdateNodes();
 		}
 
 
+	}
+
+	public void LateUpdate(){
+		table.Reposition ();
 	}
 
 	public void Clear(){
@@ -62,26 +55,30 @@ public class AttributeEditor : MonoBehaviour {
 			BehaviourNodeEditor bne = (BehaviourNodeEditor)Node;
 
 			foreach(NodeVis nv in bne.NV.childs){
-				GameObject go = (GameObject)GameObject.Instantiate (ChildDisplay.gameObject);
+				GameObject go = NGUITools.AddChild(gameObject, ChildDisplay.gameObject);
+				//GameObject go = (GameObject)GameObject.Instantiate (ChildDisplay.gameObject);
 				ChildNodeUI cnUI = go.GetComponent<ChildNodeUI>();
-				go.transform.parent = this.transform;
-				go.transform.localScale = Vector3.one;
+				//go.transform.parent = this.transform;
+				//go.transform.localScale = Vector3.one;
 
 				cnUI.node = nv.GetComponent<NodeEditor>();
 				cnUI.NodeName.text = nv.node.Info;
 				cnUI.ae = this;
 			}
 			{
-				GameObject go = (GameObject)GameObject.Instantiate (PopUplistPrefab.gameObject);
+				GameObject go = NGUITools.AddChild(gameObject, PopUplistPrefab.gameObject);
+
+				//GameObject go = (GameObject)GameObject.Instantiate (PopUplistPrefab.gameObject);
 				NewChildNodeUI ncnUI = go.GetComponent<NewChildNodeUI>();
-				go.transform.parent = this.transform;
-				go.transform.localScale = Vector3.one;
+				//go.transform.parent = this.transform;
+				//go.transform.localScale = Vector3.one;
 				ncnUI.Node = bne;
 				ncnUI.ae = this;
 				ncnUI.initList();
 			}
 		}
-		delayedReposition = true;
+		//table.Reposition ();
+		//delayedReposition = true;
 	}
 
 	private void spawnPrefab(TaskAttribute ta){
@@ -102,10 +99,12 @@ public class AttributeEditor : MonoBehaviour {
 	}
 
 	private AttributeUI spawnPrefab(AttributeUI UIElement){
-		GameObject go = (GameObject)GameObject.Instantiate (UIElement.gameObject);
+		GameObject go = NGUITools.AddChild(gameObject, UIElement.gameObject);
+		AttributeUI aUI = go.GetComponent<AttributeUI>();
+		/*GameObject go = (GameObject)GameObject.Instantiate (UIElement.gameObject);
 		AttributeUI aUI = go.GetComponent<AttributeUI>();
 		go.transform.parent = this.transform;
-		go.transform.localScale = Vector3.one;
+		go.transform.localScale = Vector3.one;*/
 		return aUI;
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [SerializeAll]
-public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
+public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface,IControlSerialization {
 
 	[DoNotSerialize]
 	private bool isActive = false;
@@ -86,6 +86,12 @@ public abstract class Task : MonoBehaviour, LeafNode , BehaviourInterface {
 
 
 	public virtual void Update(){
+	}
+
+	public bool ShouldSave ()
+	{
+		SaveIndex = Index;
+		return true;
 	}
 
 	public virtual void OnDeserialized(){
