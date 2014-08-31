@@ -16,6 +16,8 @@ public class BehaviourTree : MonoBehaviour,TreeSaveManager.TreeChangeObserver {
 	}
 
 	public void StartBehaviour(){
+		if(TreeRoot == null || Owner == null) return;
+
 		TreeRoot.IsActive = false;
 		TreeRoot.enabled = false;
 		TreeRoot.IsActive = true;
@@ -23,14 +25,14 @@ public class BehaviourTree : MonoBehaviour,TreeSaveManager.TreeChangeObserver {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 		if (StartTree || StartAll) {
 			StartTree = false;
 			StartBehaviour();
 		}
 
 	}
-	void LateUpdate(){
+	public virtual void LateUpdate(){
 		if (StartAll) {
 			StartAll = false;
 		}

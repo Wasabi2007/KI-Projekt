@@ -27,6 +27,8 @@ public class NodeVis : MonoBehaviour {
 
 	private float childSizeBuffer = 0;
 
+	private TweenColor tc;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -90,14 +92,26 @@ public class NodeVis : MonoBehaviour {
 			treeVis.TreeVisRoot.calculatePosition(0);
 			oldColaps = colaps;	
 		}
+		if(tc == null)
+			tc = GetComponentInChildren<TweenColor>();
 
-		if (linkToParent != null) {
-						if (node.IsActive) {
-								linkToParent.lr.SetColors (Color.green, Color.green);
-						} else {
-								linkToParent.lr.SetColors (Color.white, Color.white);
-						}
-				}
+		if (node.IsActive) {
+			if (linkToParent != null)
+				linkToParent.lr.SetColors (Color.green, Color.green);
+
+
+			if(tc != null){
+				tc.PlayForward();
+			}
+		} else {
+			if (linkToParent != null)
+				linkToParent.lr.SetColors (Color.white, Color.white);
+			
+			if(tc != null){
+				tc.PlayReverse();
+			}
+		}
+				
 	}
 
 	public void calculatePosition(int index){

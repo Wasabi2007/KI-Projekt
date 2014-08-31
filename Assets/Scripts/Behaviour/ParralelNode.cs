@@ -15,6 +15,7 @@ public class ParralelNode : BehaviourNode {
 	public override void Activate ()
 	{
 		base.Activate ();
+		childReturns = 0;
 		foreach (LeafNode childNode in childNodes) {
 			childNode.Activate();
 		}
@@ -36,7 +37,7 @@ public class ParralelNode : BehaviourNode {
 			parentNode.ChildTerminated(this,true);
 		}
 
-		if (isRoot) {
+		if (isRoot && childReturns >= childNodes.Count) {
 			Deactivate();
 		}
 		

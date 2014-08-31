@@ -5,11 +5,15 @@ using System.Collections;
 public class LinkVis : MonoBehaviour {
 
 	public LineRenderer lr;
+	public ClippedModel cm;
 
 	// Use this for initialization
 	void Start () {
 		if (lr == null)						
 			lr = GetComponent<LineRenderer> ();
+
+		if (cm == null)						
+			cm = GetComponent<ClippedModel> ();
 	}
 	
 	public void setUpLine(Vector3 begin, Vector3 end){//, Color color, float width, Material mat){
@@ -19,5 +23,7 @@ public class LinkVis : MonoBehaviour {
 
 		lr.SetPosition (0, begin);
 		lr.SetPosition (1, end);
+
+		//cm.Start ();
 	}
 }

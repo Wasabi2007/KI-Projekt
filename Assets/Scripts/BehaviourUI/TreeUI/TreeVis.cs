@@ -58,6 +58,7 @@ public class TreeVis : MonoBehaviour {
 	}
 
 	public void LoadTree(){
+		//GameObject go = NGUITools.AddChild(gameObject,InstanceNodeGameobjectPrefab(TreeRoot.Name));
 		GameObject go = InstanceNodeGameobject (TreeRoot.Name);
 		go.transform.parent = this.transform;
 		go.transform.localScale = Vector3.one;
@@ -99,6 +100,16 @@ public class TreeVis : MonoBehaviour {
 //			SelectedNode = ne;
 //	}
 
+
+	public GameObject InstanceNodeGameobjectPrefab(string Class){
+		foreach (NodeVisBinding bind in binds) {
+			if(Regex.IsMatch(Class,bind.Class)){
+				return bind.Prefab;
+			}
+		}
+		
+		return GameObject.CreatePrimitive(PrimitiveType.Cube);
+	}
 
 	public GameObject InstanceNodeGameobject(string Class){
 		foreach (NodeVisBinding bind in binds) {

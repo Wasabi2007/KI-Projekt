@@ -10,6 +10,7 @@ public class ClippedModel : MonoBehaviour
 {
 	private UIPanel _panel;
 	private Material _material;
+	private Camera _camera;
 	
 	private int _panelSizeXProperty;
 	private int _panelSizeYProperty;
@@ -21,6 +22,7 @@ public class ClippedModel : MonoBehaviour
 	void Start()
 	{
 		_panel = UIPanel.Find(transform);
+		_camera = UICamera.FindCameraForLayer(gameObject.layer).camera;
 		_material = !Application.isPlaying ? renderer.sharedMaterial : renderer.material;
 		
 		_virtualScreenWidth = UIRoot.GetPixelSizeAdjustment(gameObject) * Screen.width;
@@ -51,8 +53,9 @@ public class ClippedModel : MonoBehaviour
 			Vector4 panelOffsetAndSharpness;
 			
 			// Get offset
-			panelOffsetAndSharpness.x = ((_virtualScreenWidth * 0.5f + _panel.baseClipRegion.x) - (_panel.baseClipRegion.z * 0.5f)) / _virtualScreenWidth;
-			panelOffsetAndSharpness.y = ((_virtualScreenHeight * 0.5f + _panel.baseClipRegion.y) - (_panel.baseClipRegion.w * 0.5f)) / _virtualScreenHeight;
+			Vector2 bottomLeft = _camera.WorldToViewportPoint(_panel.worldCorners[0]);
+			panelOffsetAndSharpness.x = bottomLeft.x;
+			panelOffsetAndSharpness.y = bottomLeft.y;
 			
 			// Get sharpness
 			panelOffsetAndSharpness.z = sharpness.x;
