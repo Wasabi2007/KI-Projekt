@@ -59,7 +59,7 @@ public class RobotContext : MonoBehaviour {
 
 
 
-			if(currentClicked.CompareTag ("Robot")){
+			if(currentClicked != null && currentClicked.CompareTag ("Robot")){
 				selectedRobot = currentClicked;
 
 				BehaviourTree tree = selectedRobot.GetComponent<BehaviourTree> ();
