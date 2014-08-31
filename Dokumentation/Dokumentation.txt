@@ -1,0 +1,78 @@
+Dokumentation des KI-Projekts: Behavior Tree-Creator mit Testfunktion in Unity
+
+1. Motivation
+2. Zielsetzung
+2. Elemente
+3. Umsetzung( z.b. entscheidungen, dass steerings im roboter.. ? uml?)
+4. Anleitung
+
+
+
+1. Motivation
+1.1. Konzept
+
+Das Projektziel ist es, einen Ingame-Editor für Behaviour Trees zu entwickeln, welcher Bäume erstellen, ändern, speichern und laden kann. Diese sind in Test-Roboter implementierbar, sodass Roboter mit unterschiedlichen Verhalten gegeneinander antreten können. Eine Eigenschaften des Editors ist, dass sich Behaviour Trees auch zur Laufzeit bearbeiten lassen, welche nach dem erneuten Speichern und Aktualisierung erneut Abrufbar ist. Behavior Trees lassen sich aus vorgefertigten Decorator-Elementen und Tasks zusammenstellen *??um in erster Linie einfache Verhaltensweisen abzubilden??*.
+
+1.2. Entwicklungsumgebung
+
+Das Projekt wird in der Spiele-Engine Unity umgesetzt, da es durch die bereits vorhandenen Funktionen und den großen Angebot an Erweiterungen eine Schnelle Entwicklung ermöglicht. Diese Entwicklungsumgebung erlaubt es beispielsweise, für das Vorhaben vorteilhafte Plugins zu installieren, in diesem konkreten Fall „NGUI“, um die Schaltflächen für die Bearbeitung der Behaviour Trees bereitzustellen, was durch Unity ohne diese Erweiterung in dieser Funktionalität  nur mit viel Aufwand und nicht in diesem Ausmaß möglich wäre. Außerdem wird die Engine durch das „Unity Serializer“-Plugin erweitert, welches die Speicherverwaltung der Bäume ermöglicht. 
+
+Der Entwicklungsfokus liegt beim Editor für die Bäume und erst in zweiter Linie an der Testmöglichkeit durch die Roboter.
+
+1.3. Zukunftsaussichten
+
+Das Projekt soll eine Basis bieten auf der gegebenenfalls in späteren Projekten der Hochschule, wie zum Beispiel dem Medienprojekt oder dem interdisziplinären Teamprojekt, aufgebaut werden kann. Da nicht alle Punkte der Zielsetzung umgesetzt werden können gibt es Potenzial den Editor in Zukunft zu erweitern und/oder das Projekt in der Testmöglichkeit zu expandieren.
+
+2. Zielsetzung
+Die Erwartungen an das Projekt wurden in 3 Kategorien von Zielen unterteilt. Daher werden verschiedene Prioritäten in Abhängigkeit an die verbleibende Zeit des Projektes gesetzt.
+
+Projektziele:
+
+Muss-Ziele:
+- Basisroboter(mit festen Attributwerten: Hp, Schussrate, Schaden, Munition, Schnelligkeit und entsprechenden Funktionen)
+	- Einem Objekt der Klasse „Robot“ wird ein Steering-Type(steeringtype) zugewiesen. Die 	Funktionen zu den einzelnen Steering-Typen sind in der Robot-Klasse direkt implementiert. 
+- Grundbehaviours(Flee, Seek, Attack, Wander)
+- Veränderbarkeit von Tasks mit Attributen 
+- Basiseditor(Bilden/Editieren, Speichern und Laden von Behaviour Trees)
+- ?* Simple *? Elemente(Tasks) für den Editor
+- Anzeige des aktuellen Status des ausgewählten Bahaviour Trees
+
+Soll-Ziele:
+- Erweiterter Editor(Baukastensystem für den Bau eines Bahaviour Trees)[]
+- Testmöglichkeit verschiedener Behaviours durch „Roboter-Kampf“ (Interaktion zwischen zwei oder mehr Roboter-Objekte)
+- Face-Only-Steering
+- Ein Paar verschiedene vorgefertigte Behaviour Trees
+- Save As-Button zum Speichern von Bäumen unter neuem Namen.
+- Auswahlmöglichkeit für Trees/Roboter um den ausgeführten Baum anzeigen zu lassen
+- Erweiterbarkeit des Task-Pools
+- Angriff von Robotern durch schießen
+
+Kann-Ziele:
+- Schöne Grafiken
+- Aufwändiges Design
+- Mehr bzw. komplexere Tasks für vielfältige Behaviour Trees
+- Behaviour Trees als Teilbäume in andere Bäume implementierbar machen
+
+2.2. Umsetzung vll hier statt externer punkt!?(was wurde wie umgesetzt, was nicht und warum!? - problemstellungen)
+
+3. Elemente
+3.0. Maske?!
+
+Die Maske enthält eine Toolbar welche am oberen Rand angebracht ist. Von Dort aus können die Aktionen wie Speichern, Laden und Erstellen für Behaviour Trees ausgewählt werden. Außerdem befindet sich in der Leiste ein Start-Button, welcher das aktuelle Szenario startet. In der rechten, oberen Ecke ist der Hide/Show-Button dafür verantwortlich, die Speicherverwaltung und den Editor auszublenden.
+Auf der rechten Seite des Bildschirm ist ein Node-Editor, mit ein aktuell Fokusierter Knoten und dessen Unterknoten im Baum bearbeitet werden kann. Dieser lässt sich am rechten Rand bei Nichtgebrauch verstecken.
+Das Mittelfenster ist der Bereich in welchem die Roboter interagieren und auch die Behaviour Trees und diverse Auswahlfenster angezeigt werden.
+
+3.1. Editor
+
+Sobald ein Element im aktuell angezeigten Behaviour Tree angeklickt wird, wird im Editor der aktuelle Knoten und dessen Unterknoten angezeigt. Über die Pfeile kann der aktuelle Knoten samt untergeordneten Elementen in der gleichen Hierarchie nach rechts oder links verschoben werden.
+Des weiteren gibt es eine Suchleiste in der die Tasks für das Dropdown-Menü nebenan auf eine Auswahl limitiert werden können und durch Auswahl in der bereits genannten Liste als Unterknoten an das aktuelle Element angefügt werden. Die Unterknoten können durch einen Klick auf einen Entfernen-Button wieder aus dem Baum gelöscht werden.
+
+3.2. Behaviour Tree
+
+Der Baum taucht in der Mitte des Bildschirms auf. Dieser lässt sich durch das Gedrückthalten der Maustasten veschieben. Einzelne Elemente lassen sich durch einen kurzen Klick ansprechen. Insofern ein aktuelles Szenario abläuft und der Behaviour Tree aktiviert ist, wird der aktuelle Task samt Pfad im Baum farblich hervorgehoben.
+
+3.3. Roboter
+
+Roboter sind im Sichtfeld verteilt. In jeden Roboter kann ein bereits abgespeicherter Behaviour Tree geladen werden, indem durch das klicken auf einen Roboter eine Liste mit bereits abgelegten Bäumen erscheint und eine Auswahl getroffen werden kann. 
+
+3.4. Task
