@@ -1,0 +1,10 @@
+<map id="BehaviourTreeViewSelector" name="BehaviourTreeViewSelector">
+<area shape="rect" id="node4" href="$class_behaviour_tree.html" title="BehaviourTree" alt="" coords="135,261,237,288"/>
+<area shape="rect" id="node6" href="$class_behaviour_node.html" title="BehaviourNode" alt="" coords="141,165,249,191"/>
+<area shape="rect" id="node3" href="$class_behaviour_tree_editor_helper.html" title="BehaviourTreeEditorHelper" alt="" coords="92,337,267,364"/>
+<area shape="rect" id="node5" href="$interface_tree_save_manager_1_1_tree_change_observer.html" title="TreeSaveManager::TreeChange\lObserver" alt="" coords="274,157,477,199"/>
+<area shape="rect" id="node7" href="$interface_parent_node.html" title="ParentNode" alt="" coords="141,81,231,108"/>
+<area shape="rect" id="node8" href="$interface_behaviour_interface.html" title="BehaviourInterface" alt="" coords="104,5,231,32"/>
+<area shape="rect" id="node10" href="$interface_leaf_node.html" title="LeafNode" alt="" coords="256,81,332,108"/>
+<area shape="rect" id="node9" href="$interface_index_manager.html" title="IndexManager" alt="" coords="255,5,357,32"/>
+</map>

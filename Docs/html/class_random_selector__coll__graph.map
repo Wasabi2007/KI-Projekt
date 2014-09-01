@@ -1,0 +1,7 @@
+<map id="RandomSelector" name="RandomSelector">
+<area shape="rect" id="node2" href="$class_behaviour_node.html" title="BehaviourNode" alt="" coords="185,155,293,181"/>
+<area shape="rect" id="node4" href="$interface_parent_node.html" title="ParentNode" alt="" coords="141,80,231,107"/>
+<area shape="rect" id="node5" href="$interface_behaviour_interface.html" title="BehaviourInterface" alt="" coords="108,5,235,32"/>
+<area shape="rect" id="node7" href="$interface_leaf_node.html" title="LeafNode" alt="" coords="256,80,332,107"/>
+<area shape="rect" id="node6" href="$interface_index_manager.html" title="IndexManager" alt="" coords="259,5,361,32"/>
+</map>

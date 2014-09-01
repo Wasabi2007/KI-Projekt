@@ -119,9 +119,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: ShuffleArrow
+    x: 253
+    y: 540
+    width: 222
+    height: 57
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 35
+    paddingRight: 43
+    paddingTop: 45
+    paddingBottom: 48
   - name: SimpleArrow
     x: 253
-    y: 560
+    y: 502
     width: 222
     height: 37
     borderLeft: 0

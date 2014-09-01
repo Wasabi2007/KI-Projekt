@@ -1,0 +1,15 @@
+<map id="DecoratorEditor" name="DecoratorEditor">
+<area shape="rect" id="node2" href="$class_behaviour_node_editor.html" title="BehaviourNodeEditor" alt="" coords="102,260,244,287"/>
+<area shape="rect" id="node3" href="$class_node_editor.html" title="NodeEditor" alt="" coords="130,171,216,197"/>
+<area shape="rect" id="node11" href="$class_tree_vis.html" title="TreeVis" alt="" coords="469,260,536,287"/>
+<area shape="rect" id="node6" href="$class_node_vis.html" title="NodeVis" alt="" coords="326,349,396,376"/>
+<area shape="rect" id="node7" href="$class_link_vis.html" title="LinkVis" alt="" coords="431,171,496,197"/>
+<area shape="rect" id="node8" href="$class_clipped_model.html" title="ClippedModel" alt="" coords="587,81,687,108"/>
+<area shape="rect" id="node13" href="$class_behaviour_node.html" title="BehaviourNode" alt="" coords="288,171,396,197"/>
+<area shape="rect" id="node5" href="$interface_index_manager.html" title="IndexManager" alt="" coords="44,5,147,32"/>
+<area shape="rect" id="node9" href="$interface_leaf_node.html" title="LeafNode" alt="" coords="58,81,134,108"/>
+<area shape="rect" id="node14" href="$interface_parent_node.html" title="ParentNode" alt="" coords="320,81,410,108"/>
+<area shape="rect" id="node10" href="$interface_behaviour_interface.html" title="BehaviourInterface" alt="" coords="215,5,342,32"/>
+<area shape="rect" id="node12" href="$class_tree_vis_1_1_node_vis_binding.html" title="TreeVis.NodeVisBinding" alt="" coords="762,171,925,197"/>
+<area shape="rect" id="node16" href="$class_tree_vis_1_1_node_add_binding.html" title="TreeVis.NodeAddBinding" alt="" coords="520,171,687,197"/>
+</map>

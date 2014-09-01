@@ -1,0 +1,5 @@
+<map id="NodeEditor" name="NodeEditor">
+<area shape="rect" id="node3" href="$class_behaviour_node_editor.html" title="BehaviourNodeEditor" alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node5" href="$class_task_editor.html" title="TaskEditor" alt="" coords="172,155,256,181"/>
+<area shape="rect" id="node4" href="$class_decorator_editor.html" title="DecoratorEditor" alt="" coords="21,229,133,256"/>
+</map>

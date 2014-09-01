@@ -1,0 +1,6 @@
+<map id="Seek" name="Seek">
+<area shape="rect" id="node2" href="$class_target_steering.html" title="TargetSteering" alt="" coords="83,247,190,273"/>
+<area shape="rect" id="node3" href="$class_steering.html" title="Steering" alt="" coords="47,171,117,197"/>
+<area shape="rect" id="node5" href="$class_robot.html" title="Robot" alt="" coords="118,81,174,108"/>
+<area shape="rect" id="node6" href="$interface_game_manager_1_1_i_reset.html" title="GameManager::IReset" alt="" coords="141,5,293,32"/>
+</map>
