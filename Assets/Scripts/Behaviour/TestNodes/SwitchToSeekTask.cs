@@ -23,7 +23,6 @@ public class SwitchToSeekTask : Task{
 	
 	public override void Update(){
 		base.Update ();
-		Debug.Log ("Switch to Seek");
 		parentNode.ChildTerminated (this, true);
 	}
 }

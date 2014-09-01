@@ -21,8 +21,11 @@ public class StartAttackingTask : Task {
 	// Update is called once per frame
 	void Update () {
 				base.Update ();
-				Debug.Log ("Robot is in Attackmode");
-
-				parentNode.ChildTerminated (this, true);
+		if (Owner.GetComponent<Robot> ().myBattleStatus == BattleStatus.AttackingFar) {
+						parentNode.ChildTerminated (this, true);
+				}
+		else {
+						parentNode.ChildTerminated (this, false);
+				}
 		}
 }

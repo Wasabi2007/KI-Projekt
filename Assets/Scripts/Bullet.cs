@@ -30,7 +30,10 @@ public class Bullet : MonoBehaviour {
 		if (!coll.gameObject.CompareTag ("Robot") || coll.gameObject.GetComponent<Robot>() == BulletOwner)
 						return;
 		coll.gameObject.GetComponent<Robot> ().HP -= Damage;
-		Debug.Log("Bullet hit with 3 damage" );
+		if (coll.gameObject.GetComponent<Robot> ().HP <= 0)
+			coll.gameObject.GetComponent<Robot> ().myBattleStatus = BattleStatus.Defeated;
+
+		GameObject.DestroyObject(gameObject);
 	}
 
 }

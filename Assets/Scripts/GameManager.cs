@@ -39,13 +39,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetObjects(){
-		Debug.Log ("Objekte: "+ObjectsToReset.Count);
 
 		foreach(IReset r in ObjectsToReset){
 			if(r != null)
 				r.Reset();
 		}
-		Debug.Log("Robot Reset???");
+	
 
 	}
 

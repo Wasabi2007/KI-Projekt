@@ -4,14 +4,14 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Robot : MonoBehaviour,GameManager.IReset {
 
-	public float HP;
+	public float HP = 100;
 	public float FireRate;
-	public float Damage;
-	public int Ammo;
+	public float Damage = 2;
+	public int Ammo= 50;
 	public float Speed;
 
-	public float Attdist = 20f; // Angriffsdistanz
-	public float Sightdist = 40f; // Sichtweite
+	public float Attdist = 40f; // Angriffsdistanz
+	public float Sightdist = 60f; // Sichtweite
 
 	public GameObject Target;
 
@@ -80,6 +80,29 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	// Update is called once per frame
 	void Update () {
 
+		switch (myBattleStatus) {
+				case BattleStatus.AttackingFar:
+					
+						if (Time.time - lastFireTime >= FireRate && Target.GetComponent<Robot> ().myBattleStatus != BattleStatus.Defeated) {
+								if (Ammo > 0) {
+										fireBullet ();
+										lastFireTime = Time.time;
+										Ammo--;
+								}
+						}
+						else if(Target.GetComponent<Robot>().myBattleStatus == BattleStatus.Defeated)
+						{
+							myBattleStatus = BattleStatus.EnemyDefeated;
+							
+						}
+			break;
+		case BattleStatus.Defeated:
+			steeringtype = SteeringType.None;
+			
+			
+			break;
+		}
+
 		switch (steeringtype) {
 		case SteeringType.Wander:
 			wanderSteering();
@@ -100,17 +123,10 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 			break;
 		}
 
-		switch (myBattleStatus) {
-				case BattleStatus.AttackingFar:
-						if (Time.time - lastFireTime >= FireRate) {
-								if (Ammo > 0) {
-										fireBullet ();
-										lastFireTime = Time.time;
-										Ammo--;
-								}
-						}
-				break;
-				}
+
+
+
+
 	
 	}
 
@@ -340,7 +356,6 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 
 	public void Reset ()
 	{
-		Debug.Log("Robot Reset!");
 
 		HP = r_HP;
 		FireRate = r_FireRate;
@@ -364,6 +379,8 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 		this.rigidbody2D.MovePosition(r_Position);
 		this.rigidbody2D.MoveRotation(r_Rotation);
 
+		Velocity = Vector2.zero;
+		angularVelocity = 0;
 		//this.transform.position = r_Position;
 		//this.transform.rotation = r_Rotation;
 
