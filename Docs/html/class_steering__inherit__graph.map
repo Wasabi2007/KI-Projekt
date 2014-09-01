@@ -1,0 +1,7 @@
+<map id="Steering" name="Steering">
+<area shape="rect" id="node3" href="$class_target_steering.html" title="TargetSteering" alt="" coords="126,155,233,181"/>
+<area shape="rect" id="node7" href="$class_wander.html" title="Wander" alt="" coords="257,155,323,181"/>
+<area shape="rect" id="node4" href="$class_face_only_steering.html" title="FaceOnlySteering" alt="" coords="5,229,132,256"/>
+<area shape="rect" id="node5" href="$class_flee.html" title="Flee" alt="" coords="156,229,203,256"/>
+<area shape="rect" id="node6" href="$class_seek.html" title="Seek" alt="" coords="227,229,279,256"/>
+</map>

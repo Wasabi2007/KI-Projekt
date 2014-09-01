@@ -1,0 +1,29 @@
+<map id="BehaviourInterface" name="BehaviourInterface">
+<area shape="rect" id="node2" href="$interface_leaf_node.html" title="LeafNode" alt="" coords="187,347,263,373"/>
+<area shape="rect" id="node9" href="$class_task.html" title="Task" alt="" coords="347,639,398,665"/>
+<area shape="rect" id="node28" href="$interface_parent_node.html" title="ParentNode" alt="" coords="180,195,271,221"/>
+<area shape="rect" id="node3" href="$class_behaviour_node.html" title="BehaviourNode" alt="" coords="319,157,427,184"/>
+<area shape="rect" id="node4" href="$class_parralel_node.html" title="ParralelNode" alt="" coords="511,5,607,32"/>
+<area shape="rect" id="node5" href="$class_random_selector.html" title="RandomSelector" alt="" coords="500,56,619,83"/>
+<area shape="rect" id="node6" href="$class_selector.html" title="Selector" alt="" coords="524,107,595,133"/>
+<area shape="rect" id="node7" href="$class_sequence.html" title="Sequence" alt="" coords="519,157,599,184"/>
+<area shape="rect" id="node8" href="$class_util_fail.html" title="UtilFail" alt="" coords="528,208,591,235"/>
+<area shape="rect" id="node10" href="$class_activate_game_object_task.html" title="ActivateGameObjectTask" alt="" coords="475,259,644,285"/>
+<area shape="rect" id="node11" href="$class_distance_less_than_task.html" title="DistanceLessThanTask" alt="" coords="481,309,638,336"/>
+<area shape="rect" id="node12" href="$class_distance_more_then_task.html" title="DistanceMoreThenTask" alt="" coords="480,360,639,387"/>
+<area shape="rect" id="node13" href="$class_find_next_target_task.html" title="FindNextTargetTask" alt="" coords="490,411,629,437"/>
+<area shape="rect" id="node14" href="$class_has_no_target_task.html" title="HasNoTargetTask" alt="" coords="497,461,622,488"/>
+<area shape="rect" id="node15" href="$class_has_target_task.html" title="HasTargetTask" alt="" coords="505,512,614,539"/>
+<area shape="rect" id="node16" href="$class_h_p_equals_task.html" title="HPEqualsTask" alt="" coords="505,563,613,589"/>
+<area shape="rect" id="node17" href="$class_h_p_less_than_task.html" title="HPLessThanTask" alt="" coords="497,613,621,640"/>
+<area shape="rect" id="node18" href="$class_h_p_more_than_task.html" title="HPMoreThanTask" alt="" coords="497,664,622,691"/>
+<area shape="rect" id="node19" href="$class_output_task.html" title="OutputTask" alt="" coords="515,715,604,741"/>
+<area shape="rect" id="node20" href="$class_send_message_task.html" title="SendMessageTask" alt="" coords="493,765,626,792"/>
+<area shape="rect" id="node21" href="$class_start_attacking_task.html" title="StartAttackingTask" alt="" coords="493,816,626,843"/>
+<area shape="rect" id="node22" href="$class_stop_attacking_task.html" title="StopAttackingTask" alt="" coords="493,867,625,893"/>
+<area shape="rect" id="node23" href="$class_switch_to_flee_task.html" title="SwitchToFleeTask" alt="" coords="495,917,623,944"/>
+<area shape="rect" id="node24" href="$class_switch_to_none_task.html" title="SwitchToNoneTask" alt="" coords="493,968,626,995"/>
+<area shape="rect" id="node25" href="$class_switch_to_seek_task.html" title="SwitchToSeekTask" alt="" coords="493,1019,626,1045"/>
+<area shape="rect" id="node26" href="$class_switch_to_wander_task.html" title="SwitchToWanderTask" alt="" coords="485,1069,633,1096"/>
+<area shape="rect" id="node27" href="$class_wait_task.html" title="WaitTask" alt="" coords="521,1120,598,1147"/>
+</map>
