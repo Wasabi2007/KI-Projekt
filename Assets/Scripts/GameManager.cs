@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 		if(singleton == null){
 			singleton = this;
 		}
-		else{
+		else if(singleton != this){
 			GameObject.Destroy(gameObject);
 		}
 	}
