@@ -76,3 +76,4 @@ Der Baum taucht in der Mitte des Bildschirms auf. Dieser lässt sich durch das Ge
 Roboter sind im Sichtfeld verteilt. In jeden Roboter kann ein bereits abgespeicherter Behaviour Tree geladen werden, indem durch das klicken auf einen Roboter eine Liste mit bereits abgelegten Bäumen erscheint und eine Auswahl getroffen werden kann. 
 
 3.4. Task
+Es gibt zwei Arten von Tasks. Zum einen die mit und zum anderen die ohne Parameter. 
