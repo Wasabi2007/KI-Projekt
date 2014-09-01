@@ -23,8 +23,53 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
 	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
 
+
+	private float r_HP;
+	private float r_FireRate;
+	private float r_Damage;
+	private int r_Ammo;
+	private float r_Speed;
+	
+	private float r_Attdist = 20f; // Angriffsdistanz
+	private float r_Sightdist = 40f; // Sichtweite
+	
+	private GameObject r_Target;
+	
+	private SteeringType r_steeringtype = SteeringType.Wander;
+	private GameObject r_BulletPrefab;
+	
+	private float r_lastFireTime;
+	
+	private BattleStatus r_myBattleStatus = BattleStatus.NotInBattle;
+	private BattleStatus r_pastBattleStatus = BattleStatus.NotInBattle;
+
+	private Vector2 r_Position;
+	private float r_Rotation;
+
 	void Awake () {
 		GameManager.getGameManager().addResetter(this);
+		
+		r_HP = HP;
+		r_FireRate = FireRate;
+		r_Damage = Damage;
+		r_Ammo = Ammo;
+		r_Speed = Speed;
+		
+		r_Attdist = Attdist; // Angriffsdistanz
+		r_Sightdist = Sightdist; // Sichtweite
+		
+		r_Target = Target;
+		
+		r_steeringtype = steeringtype;
+		r_BulletPrefab = BulletPrefab;
+		
+		r_lastFireTime = lastFireTime;
+		
+		r_myBattleStatus = BattleStatus.NotInBattle;
+		r_pastBattleStatus = BattleStatus.NotInBattle;
+		
+		r_Position = this.rigidbody2D.position;
+		r_Rotation = this.rigidbody2D.rotation;
 	}
 
 	// Use this for initialization
@@ -296,5 +341,31 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	public void Reset ()
 	{
 		Debug.Log("Robot Reset!");
+
+		HP = r_HP;
+		FireRate = r_FireRate;
+		Damage = r_Damage;
+		Ammo = r_Ammo;
+		Speed = r_Speed;
+		
+		Attdist = r_Attdist; // Angriffsdistanz
+		Sightdist = r_Sightdist; // Sichtweite
+		
+		Target = r_Target;
+		
+		steeringtype = r_steeringtype;
+		BulletPrefab = r_BulletPrefab;
+		
+		lastFireTime = r_lastFireTime;
+		
+		myBattleStatus = r_myBattleStatus;
+		pastBattleStatus = r_pastBattleStatus;
+		
+		this.rigidbody2D.MovePosition(r_Position);
+		this.rigidbody2D.MoveRotation(r_Rotation);
+
+		//this.transform.position = r_Position;
+		//this.transform.rotation = r_Rotation;
+
 	}
 }

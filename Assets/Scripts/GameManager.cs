@@ -39,10 +39,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetObjects(){
+		Debug.Log ("Objekte: "+ObjectsToReset.Count);
+
 		foreach(IReset r in ObjectsToReset){
 			if(r != null)
 				r.Reset();
 		}
+		Debug.Log("Robot Reset???");
+
 	}
 
 	// Use this for initialization
@@ -53,5 +57,6 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+
 	}
 }
