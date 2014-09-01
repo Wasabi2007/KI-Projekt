@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Robot : MonoBehaviour {
+public class Robot : MonoBehaviour,GameManager.IReset {
 
 	public float HP;
 	public float FireRate;
@@ -22,6 +22,10 @@ public class Robot : MonoBehaviour {
 
 	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
 	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
+
+	void Awake () {
+		GameManager.getGameManager().addResetter(this);
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -288,4 +292,9 @@ public class Robot : MonoBehaviour {
 
 	}
 	#endregion
+
+	public void Reset ()
+	{
+		Debug.Log("Robot Reset!");
+	}
 }
