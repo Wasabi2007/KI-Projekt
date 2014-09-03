@@ -25,7 +25,6 @@ public class SwitchToFleeTask : Task {
 	
 	public override void Update(){
 				base.Update ();
-				Debug.Log ("Switch to Flee");
 				parentNode.ChildTerminated (this, true);
 		}
 }

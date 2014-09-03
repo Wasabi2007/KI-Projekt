@@ -39,10 +39,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetObjects(){
+
 		foreach(IReset r in ObjectsToReset){
 			if(r != null)
 				r.Reset();
 		}
+	
+
 	}
 
 	// Use this for initialization
@@ -53,5 +56,6 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+
 	}
 }

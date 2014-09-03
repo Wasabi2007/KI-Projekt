@@ -21,7 +21,7 @@ public class SwitchToNoneTask : Task {
 	// Update is called once per frame
 	public override void Update(){
 		base.Update ();
-		Debug.Log ("Switch to None");
+
 		parentNode.ChildTerminated (this,true);
 	}
 }
