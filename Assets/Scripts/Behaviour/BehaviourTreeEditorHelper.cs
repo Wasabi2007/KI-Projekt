@@ -65,7 +65,7 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 		if (FileName.Length == 0)
 			return;
 		
-		if (TreeRoot != null) {
+		if (TreeRoot != null && !lastLoadedTree.Equals(FileName)) {
 			GameObject.DestroyImmediate (TreeRoot.gameObject);
 			TreeVis.getTreeVis ().DestroyTree ();
 			TreeRoot=null;
