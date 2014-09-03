@@ -18,13 +18,7 @@ public class BehaviourTreeViewSelector : MonoBehaviour {
 		list = GetComponent<UIPopupList>();
 
 		if(list.isOpen || !isEnabled) return;
-		list.items.Clear();
-		BehaviourTree[] behaviourtrees = GameObject.FindObjectsOfType<BehaviourTree>();
-		list.items.Add("None");
-		foreach(BehaviourTree tree in behaviourtrees){
-			if(tree == bteh) continue;
-			list.items.Add(tree.gameObject.name);
-		}
+		CollectTrees ();
 	}
 
 	// Use this for initialization
@@ -39,12 +33,18 @@ public class BehaviourTreeViewSelector : MonoBehaviour {
 
 	void OnClick(){
 		if(list.isOpen || !isEnabled) return;
-		list.items.Clear();
-		BehaviourTree[] behaviourtrees = GameObject.FindObjectsOfType<BehaviourTree>();
-		list.items.Add("None");
-		foreach(BehaviourTree tree in behaviourtrees){
-			if(tree == bteh) continue;
-			list.items.Add(tree.gameObject.name);
+		CollectTrees ();
+	}
+
+	void CollectTrees ()
+	{
+		list.items.Clear ();
+		BehaviourTree[] behaviourtrees = GameObject.FindObjectsOfType<BehaviourTree> ();
+		list.items.Add ("None");
+		foreach (BehaviourTree tree in behaviourtrees) {
+			if (tree == bteh || tree.Owner == null || tree.TreeRoot == null)
+				continue;
+			list.items.Add (tree.gameObject.name);
 		}
 	}
 
@@ -77,13 +77,7 @@ public class BehaviourTreeViewSelector : MonoBehaviour {
 		isEnabled = true;
 
 		if(list.isOpen) return;
-		list.items.Clear();
-		BehaviourTree[] behaviourtrees = GameObject.FindObjectsOfType<BehaviourTree>();
-		list.items.Add("None");
-		foreach(BehaviourTree tree in behaviourtrees){
-			if(tree == bteh) continue;
-			list.items.Add(tree.gameObject.name);
-		}
+		CollectTrees ();
 	}
 
 	public void Reset(){

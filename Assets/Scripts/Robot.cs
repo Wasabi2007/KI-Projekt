@@ -66,7 +66,31 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 						}
 				break;
 				}
-	
+		
+	}
+
+	Vector3 CageInScreen(Vector3 Pos){
+		Vector3 pixelPos = Camera.main.WorldToScreenPoint(Pos);
+		Vector3 newPos = pixelPos;
+		if(pixelPos.x < 0){
+			newPos.x = Camera.main.pixelWidth + pixelPos.x;
+		}
+		if(pixelPos.y < 0){
+			newPos.y = Camera.main.pixelHeight + pixelPos.y;
+		}
+		
+		if(pixelPos.x > Camera.main.pixelWidth){
+			newPos.x = pixelPos.x - Camera.main.pixelWidth;
+		}
+		if(pixelPos.y > Camera.main.pixelHeight){
+			newPos.y = pixelPos.y-Camera.main.pixelHeight;
+		}
+		Debug.Log(rigidbody2D.position);
+		Debug.Log(pixelPos);
+		Debug.Log(newPos);
+		Debug.Log(Camera.main.ScreenToWorldPoint(newPos));
+
+		return Camera.main.ScreenToWorldPoint(newPos);
 	}
 
 	void OnDrawGizmos(){
@@ -142,7 +166,7 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 		
 		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
 		
-		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MovePosition (CageInScreen(targetPosition));
 		rigidbody2D.MoveRotation (desiredRotation);
 		
 		//rigidbody2D.angularVelocity = Mathf.Rad2Deg*Mathf.Acos(Mathf.Clamp(Vector2.Dot(currentVelocity.normalized,desiredVelocity.normalized),-1,1));
@@ -173,7 +197,7 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 		
 		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
 		
-		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MovePosition (CageInScreen(targetPosition));
 		rigidbody2D.MoveRotation (desiredRotation);
 
 		//Debug.Log ("<" + currentVelocity.normalized + "," + desiredVelocity.normalized + "> = " + Vector2.Dot (currentVelocity.normalized, desiredVelocity.normalized));
@@ -222,7 +246,7 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 
 		float desiredRotation = Mathf.Rad2Deg*Mathf.Atan2(Velocity.y,Velocity.x);
 
-		rigidbody2D.MovePosition (targetPosition);
+		rigidbody2D.MovePosition (CageInScreen(targetPosition));
 		rigidbody2D.MoveRotation (desiredRotation);
 		//Debug.Log (rigidbody2D.angularVelocity);
 		// move the circle point randomly on the circular path
