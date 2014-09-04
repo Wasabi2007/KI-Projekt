@@ -10,8 +10,8 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	public int Ammo;
 	public float Speed;
 
-	public float Attdist = 20f; // Angriffsdistanz
-	public float Sightdist = 40f; // Sichtweite
+	public float Attdist = 40f; // Angriffsdistanz
+	public float Sightdist = 60f; // Sichtweite
 
 	public GameObject Target;
 
@@ -23,8 +23,57 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	public BattleStatus myBattleStatus = BattleStatus.NotInBattle;
 	public BattleStatus pastBattleStatus = BattleStatus.NotInBattle;
 
+	// Private Variablen
+
+	private float r_HP;
+	private float r_FireRate;
+	private float r_Damage;
+	private int r_Ammo;
+	private float r_Speed;
+	
+	private float r_Attdist; // Angriffsdistanz
+	private float r_Sightdist; // Sichtweite
+	
+	private GameObject r_Target;
+	
+	private SteeringType r_steeringtype = SteeringType.Wander;
+	private GameObject r_BulletPrefab;
+	
+	private float r_lastFireTime;
+	
+	private BattleStatus r_myBattleStatus = BattleStatus.NotInBattle;
+	private BattleStatus r_pastBattleStatus = BattleStatus.NotInBattle;
+
+	// TODO: Drehung und Position über Rigidbody2D
+
+	private Vector2 r_position;
+	private float r_dreh;
+
+
 	void Awake () {
 		GameManager.getGameManager().addResetter(this);
+
+		r_HP = HP;
+		r_FireRate = FireRate;
+		r_Damage = Damage;
+		r_Ammo = Ammo;
+		r_Speed = Speed;
+		
+		r_Attdist = Attdist; // Angriffsdistanz
+		r_Sightdist = Sightdist; // Sichtweite
+		
+		r_Target = Target;
+		
+		r_steeringtype = steeringtype;
+		r_BulletPrefab = BulletPrefab;
+		
+		r_lastFireTime = lastFireTime;
+		
+		r_myBattleStatus = myBattleStatus;
+		r_pastBattleStatus = pastBattleStatus;
+
+		r_position = this.rigidbody2D.position;
+		r_dreh = this.rigidbody2D.rotation;
 	}
 
 	// Use this for initialization
@@ -35,38 +84,49 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 	// Update is called once per frame
 	void Update () {
 
-		switch (steeringtype) {
-		case SteeringType.Wander:
-			wanderSteering();
+		switch (myBattleStatus) {
+		case BattleStatus.AttackingFar:
+			if (Time.time - lastFireTime >= FireRate && Target.GetComponent<Robot>().myBattleStatus != BattleStatus.Defeated) {
+				if (Ammo > 0) {
+					fireBullet ();
+					lastFireTime = Time.time;
+					Ammo--;
+				}
+			}
+			else if(Target.GetComponent<Robot>().myBattleStatus == BattleStatus.Defeated)
+			{
+				myBattleStatus = BattleStatus.EnemyDefeated;
+			
+			}
+
 			break;
-		case SteeringType.Flee:
-			fleeSteering();
-			break;
-		case SteeringType.Seek:
-			seekSteering();
-			break;
-		case SteeringType.None:
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.angularVelocity = 0f;
-			break;
-		case SteeringType.FaceOnly:
-			//velocity unwichtig
-			faceOnlySteering();
+		case BattleStatus.Defeated:
+
+			Speed = 0;
+
 			break;
 		}
 
-		switch (myBattleStatus) {
-				case BattleStatus.AttackingFar:
-						if (Time.time - lastFireTime >= FireRate) {
-								if (Ammo > 0) {
-										fireBullet ();
-										lastFireTime = Time.time;
-										Ammo--;
-								}
-						}
-				break;
+		switch (steeringtype) {
+				case SteeringType.Wander:
+						wanderSteering ();
+						break;
+				case SteeringType.Flee:
+						fleeSteering ();
+						break;
+				case SteeringType.Seek:
+						seekSteering ();
+						break;
+				case SteeringType.None:
+						rigidbody2D.velocity = Vector2.zero;
+						rigidbody2D.angularVelocity = 0f;
+						break;
+				case SteeringType.FaceOnly:
+			//velocity unwichtig
+						faceOnlySteering ();
+						break;
 				}
-		
+
 	}
 
 	Vector3 CageInScreen(Vector3 Pos){
@@ -85,10 +145,6 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 		if(pixelPos.y > Camera.main.pixelHeight){
 			newPos.y = pixelPos.y-Camera.main.pixelHeight;
 		}
-		Debug.Log(rigidbody2D.position);
-		Debug.Log(pixelPos);
-		Debug.Log(newPos);
-		Debug.Log(Camera.main.ScreenToWorldPoint(newPos));
 
 		return Camera.main.ScreenToWorldPoint(newPos);
 	}
@@ -299,7 +355,7 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 		bla.transform.parent = this.transform.parent;
 		bla.transform.localScale = Vector3.one;
 		bla.transform.position = this.transform.position;
-		Debug.Log (bla.transform.position);
+		//Debug.Log (bla.transform.position);
 
 		Vector2 currentPosition = this.transform.position;
 		Vector2 currentVelocity = this.rigidbody2D.velocity;
@@ -319,6 +375,30 @@ public class Robot : MonoBehaviour,GameManager.IReset {
 
 	public void Reset ()
 	{
-		Debug.Log("Robot Reset!");
+		  HP = r_HP;
+		  FireRate = r_FireRate;
+		  Damage = r_Damage;
+		  Ammo = r_Ammo;
+		  Speed = r_Speed;
+		
+		  Attdist = r_Attdist; // Angriffsdistanz
+		  Sightdist = r_Sightdist; // Sichtweite
+		
+		  Target = r_Target;
+		
+		  steeringtype = r_steeringtype;
+		  BulletPrefab = r_BulletPrefab;
+		 
+	      lastFireTime = r_lastFireTime;
+		
+		  myBattleStatus = r_myBattleStatus;
+		  pastBattleStatus = r_pastBattleStatus;
+
+		  this.rigidbody2D.MovePosition(r_position);
+		  this.rigidbody2D.MoveRotation(r_dreh);
+
+		  Velocity = Vector2.zero;
+		  angularVelocity = 0;
+		 
 	}
 }
