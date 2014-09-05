@@ -9,7 +9,7 @@ Zusätzlich gibt es noch eine Verwalter-Klasse.
 Für die Visuelle Darstellung wurde ein MVC eingesetzt. Wobei leider regeln des MVC gebrochen werden mussten da es keine einfache Möglichkeit gab an die entsprechenden variablen und Funktionen zu gelangen.
 
 \section{Kern-Klassen}
- Zur Feststellung der Vater-Kind-Beziehungen von Knoten wird die Struktur von Unity benutzt da diese schon zur Verfügung steht. Dies erlaubt es Entwicklern auch ohne Editor funktionierende Verhaltensbäume zu bauen und modifizieren.
+ Zur Feststellung der Vater-Kind-Beziehungen von Knoten wird die Struktur von Unity benutzt da diese schon zur Verfügung steht. Dies erlaubt es Entwicklern auch ohne Editor, funktionierende Verhaltensbäume zu bauen und zu modifizieren.
 \subsection{BehaviourNode}
 \begin{figure}[h!] %[hbtp]
 	\centering
@@ -17,7 +17,7 @@ Für die Visuelle Darstellung wurde ein MVC eingesetzt. Wobei leider regeln des M
 	\caption{Beziehung der BehaviourNode Klasse}
 	\label{a1}
 \end{figure}
-\textbf{BehaviourNode} ist die eine abstrakte Klasse auf der alle Inneren Knoten wie \textbf{Selector}, \textbf{Sequence} oder \textbf{UtilFail} basieren. Falls ein weiterer Innerer Knoten benötigt wird empfiehlt es sich von dieser Klasse abzuleiten.
+\textbf{BehaviourNode} ist die eine abstrakte Klasse auf der alle Inneren Knoten wie \textbf{Selector}, \textbf{Sequence} oder \textbf{UtilFail} basieren. Falls ein weiterer, innerer Knoten benötigt wird empfiehlt es sich, diese von der vorhandenen Klasse abzuleiten.
 \newpage
 \subsection{Task}
 
@@ -39,20 +39,21 @@ Die abstrakte Klasse \textbf{Task} ist die Basis aller Tasks die vom Baum ausgef
 \end{figure}
 \textbf{BehaviourTree} Stellt die Schnittstelle zwischen Verhaltensbaum und Spielobjekt da. Der \textbf{Owner}(Eigentümer) des Baumes und kann ein Beliebiges \textbf{GameObject} sein. Auf diesen können während der Laufzeit \textbf{Tasks} und \textbf{BehaviourNodes} zu greifen. 
 
+\newpage
 \section{Editor}
 Das GUI für die Bearbeitung der Behaviourtrees wurde mit Hilfe von NGUI erstellt.\\
 NGUI ist eine mächtige Erweiterung für Unity die es ermöglicht komplexe und dynamische GUI's zu erstellen.
 \subsection{TreeVis}
 \begin{figure}[h!] %[hbtp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{images/class_tree_vis__coll__graph.png}
+		\includegraphics[width=1\textwidth]{images/class_tree_vis__coll__graph.png}
 	\caption{Beziehung der TreeVis Klasse}
 	\label{a4}
 \end{figure}
 \textbf{TreeVis} ist das Kernstück zum Visualisieren eines Behaviourtrees. Diese Klasse startet eine Rekursive Generierung des Visuellen Baumknoten. Welches UIPrefab für einen Knoten verwendet wird kann der Nutzer über die TreeVis Instanz im Unity Editor festlegen. Auch welche Knoten Hinzugefügt werden können, kann der Nutzer festlegen.
 
 \subsection{NodeVis}
-Die Klasse \textbf{NodeVis} kümmert sich um die Richtige Positionierung und anzeigen des Statutes des Knoten.
+Die Klasse \textbf{NodeVis} kümmert sich um die Richtige Positionierung und anzeigen des Status des Knoten.
 
 \subsection{NodeEditor}
 Die \textbf{NodeEditor} Klasse hingegen ist für die Veränderung von den Knoten zuständig wie Position in der Baumebene oder Erstellen neuer Kind-Knoten. Diese ist die Abstrakte Vaterklasse von \textbf{BehaviourEditor} und \textbf{TaskEditor}
