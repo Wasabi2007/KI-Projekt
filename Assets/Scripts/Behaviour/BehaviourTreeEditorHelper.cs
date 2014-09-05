@@ -64,13 +64,14 @@ public class BehaviourTreeEditorHelper : BehaviourTree {
 	public override void LoadTree(string FileName){
 		if (FileName.Length == 0)
 			return;
-		
-		if (TreeRoot != null && !lastLoadedTree.Equals(FileName)) {
+
+		if (TreeRoot != null && !lastLoadedTree.Equals(FileName)){
 			GameObject.DestroyImmediate (TreeRoot.gameObject);
-			TreeVis.getTreeVis ().DestroyTree ();
-			TreeRoot=null;
-			TreeVis.getTreeVis ().TreeRoot = null;
 		}
+
+		TreeVis.getTreeVis ().DestroyTree ();
+		TreeRoot=null;
+		TreeVis.getTreeVis ().TreeRoot = null;
 		
 		LevelSerializer.LoadObjectTreeFromFile(FileName,loaded2);
 		lastLoadedTree = FileName;
