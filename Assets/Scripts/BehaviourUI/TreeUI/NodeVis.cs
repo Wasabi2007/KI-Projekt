@@ -20,7 +20,7 @@ public class NodeVis : MonoBehaviour {
 				get{ return needSizeRecalced; } 
 				set {
 						needSizeRecalced = value; 
-						if (parent != null)
+						if (parent != null && value)
 								parent.NeedSizeRecalced = value;
 				}
 		}
@@ -125,7 +125,7 @@ public class NodeVis : MonoBehaviour {
 		}
 		if (parent != null) {
 						transform.localPosition = Vector3.down * treeVis.Y_Spacing + Vector3.left * (parentChildsize * 0.5f) + Vector3.right * neighborSize + Vector3.right * (childSize () * 0.5f);
-			linkToParent.setUpLine (-Vector3.back*100, -transform.localPosition-Vector3.back*100);
+			linkToParent.setUpLine (-Vector3.back*1, -transform.localPosition-Vector3.back*1);
 				}
 		if (!colaps) {
 						int localIndex = 0;
@@ -142,13 +142,13 @@ public class NodeVis : MonoBehaviour {
 		childSizeBuffer = 0;
 		needSizeRecalced = false;
 		if (childs.Count <= 0 || colaps) {
-				childSizeBuffer = treeVis.X_Spacing;
-				return childSizeBuffer;
-				} else {
-					foreach(NodeVis nVis in childs){
-						childSizeBuffer+=nVis.childSize();
-					}
-				return childSizeBuffer;
-				}
+			childSizeBuffer = treeVis.X_Spacing;
+			return childSizeBuffer;
+		} else {
+			foreach(NodeVis nVis in childs){
+				childSizeBuffer+=nVis.childSize();
+			}
+			return childSizeBuffer;
+		}
 	}
 }

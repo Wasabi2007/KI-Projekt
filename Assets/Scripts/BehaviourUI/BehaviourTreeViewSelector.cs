@@ -89,6 +89,7 @@ public class BehaviourTreeViewSelector : MonoBehaviour {
 		if(value.Equals("None")){
 			EnableStuff();
 			if(oldTree != null){
+				oldTree.ReCaptureChildsAndParents();
 				bteh.VisTree(oldTree);
 				oldTree = null;
 			}

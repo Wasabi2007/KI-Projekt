@@ -42,15 +42,19 @@ public class NodeEditor : MonoBehaviour {
 	}
 
 	virtual public void remove(){
+		if(NV.parent == null) return;
+
 		NV.parent.childs.Remove (NV);
 		NV.node.parentNode.childNodes.Remove (NV.node);
 		NV.NeedSizeRecalced = true;
-		NV.treeVis.TreeVisRoot.calculatePosition (0);
-		if (NV.treeVis.SelectedNode == this) {
-			NV.treeVis.SelectedNode = null;
+
+		GameObject.DestroyImmediate (NV.node.HirachiOwner);
+		GameObject.DestroyImmediate (NV.gameObject);
+
+		TreeVis.getTreeVis().TreeVisRoot.calculatePosition (0);
+		if (TreeVis.getTreeVis().SelectedNode == this) {
+			TreeVis.getTreeVis().SelectedNode = null;
 		}
-		GameObject.Destroy (NV.node.HirachiOwner);
-		GameObject.Destroy (NV.gameObject);
 	}
 
 	virtual public void toggleColaps(){
