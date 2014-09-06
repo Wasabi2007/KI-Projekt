@@ -2,14 +2,14 @@
 
 %was wurde wie umgesetzt, was nicht und warum!? - problemstellungen..
 
-Bei der Umsetzung wurde versucht die Eigenheiten von Unity zu nutzen eine einfache und Anpassbare Engine für Behaviourtrees zu entwickeln.\\
-Die Engine besteht im Kern 2 Klassen die Abstrakt sind. Aus diesen lassen sich alle benötigten knoten ableiten.
+Bei der Umsetzung wurde versucht die Eigenheiten von Unity zu nutzen, um eine einfache und anpassbare Engine für Behaviourtrees zu entwickeln.\\
+Die Engine besteht im Kern aus zwei Klassen die abstrakt sind. Aus diesen lassen sich alle benötigten Knoten ableiten.
 Zusätzlich gibt es noch eine Verwalter-Klasse.
 
-Für die Visuelle Darstellung wurde ein MVC eingesetzt. Wobei leider regeln des MVC gebrochen werden mussten da es keine einfache Möglichkeit gab an die entsprechenden variablen und Funktionen zu gelangen.
+Für die Visuelle Darstellung wurde ein MVC eingesetzt, wobei leider Regeln des MVC gebrochen werden mussten, da es keine einfache Möglichkeit gab, an die entsprechenden Variablen und Funktionen zu gelangen.
 
 \section{Kern-Klassen}
- Zur Feststellung der Vater-Kind-Beziehungen von Knoten wird die Struktur von Unity benutzt da diese schon zur Verfügung steht. Dies erlaubt es Entwicklern auch ohne Editor, funktionierende Verhaltensbäume zu bauen und zu modifizieren.
+ Zur Feststellung der Vater-Kind-Beziehungen von Knoten wird die Struktur von Unity benutzt, da diese schon zur Verfügung steht. Dies erlaubt es Entwicklern auch ohne Editor funktionierende Verhaltensbäume zu bauen und zu modifizieren.
 \subsection{BehaviourNode}
 \begin{figure}[h!] %[hbtp]
 	\centering
@@ -17,7 +17,7 @@ Für die Visuelle Darstellung wurde ein MVC eingesetzt. Wobei leider regeln des M
 	\caption{Beziehung der BehaviourNode Klasse}
 	\label{a1}
 \end{figure}
-\textbf{BehaviourNode} ist die eine abstrakte Klasse auf der alle Inneren Knoten wie \textbf{Selector}, \textbf{Sequence} oder \textbf{UtilFail} basieren. Falls ein weiterer, innerer Knoten benötigt wird empfiehlt es sich, diese von der vorhandenen Klasse abzuleiten.
+\textbf{BehaviourNode} ist die eine abstrakte Klasse, auf der alle Inneren Knoten wie \textbf{Selector}, \textbf{Sequence} oder \textbf{UtilFail} basieren. Falls ein weiterer, innerer Knoten benötigt wird, empfiehlt es sich, diesen von der vorhandenen Klasse abzuleiten.
 \newpage
 \subsection{Task}
 
@@ -27,7 +27,7 @@ Für die Visuelle Darstellung wurde ein MVC eingesetzt. Wobei leider regeln des M
 	\caption{Beziehung der Task Klasse}
 	\label{a2}
 \end{figure}
-Die abstrakte Klasse \textbf{Task} ist die Basis aller Tasks die vom Baum ausgeführt werden können. Sie ist so angelegt das ein Task keine weiteren Kind-Knoten haben kann. Wie ein neuer Tasknode aussehen kann lässt sich gut an den Beispielklassen \textbf{OutputTask} und \textbf{WaitTimeTask} erkennen.
+Die abstrakte Klasse \textbf{Task} ist die Basis aller Tasks, die vom Baum ausgeführt werden können. Sie ist so angelegt, dass ein Task keine weiteren Kind-Knoten haben kann. Wie ein neuer Tasknode aussehen kann, lässt sich gut an den Beispielklassen \textbf{OutputTask} und \textbf{WaitTimeTask} erkennen.
 
 \subsection{BehaviourTree}
 
@@ -37,12 +37,12 @@ Die abstrakte Klasse \textbf{Task} ist die Basis aller Tasks die vom Baum ausgef
 	\caption{Beziehung der BehaviourTree Klasse}
 	\label{a3}
 \end{figure}
-\textbf{BehaviourTree} Stellt die Schnittstelle zwischen Verhaltensbaum und Spielobjekt da. Der \textbf{Owner}(Eigentümer) des Baumes und kann ein Beliebiges \textbf{GameObject} sein. Auf diesen können während der Laufzeit \textbf{Tasks} und \textbf{BehaviourNodes} zu greifen. 
+\textbf{BehaviourTree} stellt die Schnittstelle zwischen Verhaltensbaum und Spielobjekt dar. Der \textbf{Owner}(Eigentümer) des Baumes kann ein beliebiges \textbf{GameObject} sein. Auf diesen können während der Laufzeit \textbf{Tasks} und \textbf{BehaviourNodes} zugreifen. 
 
 \newpage
 \section{Editor}
 Das GUI für die Bearbeitung der Behaviourtrees wurde mit Hilfe von NGUI erstellt.\\
-NGUI ist eine mächtige Erweiterung für Unity die es ermöglicht komplexe und dynamische GUI's zu erstellen.
+NGUI ist eine mächtige Erweiterung für Unity, die es ermöglicht komplexe und dynamische GUI's zu erstellen.
 \subsection{TreeVis}
 \begin{figure}[h!] %[hbtp]
 	\centering
@@ -50,14 +50,14 @@ NGUI ist eine mächtige Erweiterung für Unity die es ermöglicht komplexe und dyna
 	\caption{Beziehung der TreeVis Klasse}
 	\label{a4}
 \end{figure}
-\textbf{TreeVis} ist das Kernstück zum Visualisieren eines Behaviourtrees. Diese Klasse startet eine Rekursive Generierung des Visuellen Baumknoten. Welches UIPrefab für einen Knoten verwendet wird kann der Nutzer über die TreeVis Instanz im Unity Editor festlegen. Auch welche Knoten Hinzugefügt werden können, kann der Nutzer festlegen.
+\textbf{TreeVis} ist das Kernstück zum Visualisieren eines Behaviourtrees. Diese Klasse startet eine rekursive Generierung des visuellen Baumknotens. Welches UIPrefab für einen Knoten verwendet wird, kann der Nutzer über die TreeVis Instanz im Unity Editor festlegen. Auch welche Knoten Hinzugefügt werden können, kann der Nutzer festlegen.
 
 \subsection{NodeVis}
-Die Klasse \textbf{NodeVis} kümmert sich um die Richtige Positionierung und anzeigen des Status des Knoten.
+Die Klasse \textbf{NodeVis} kümmert sich um die richtige Positionierung und das Anzeigen des Status des Knoten.
 
 \subsection{NodeEditor}
-Die \textbf{NodeEditor} Klasse hingegen ist für die Veränderung von den Knoten zuständig wie Position in der Baumebene oder Erstellen neuer Kind-Knoten. Diese ist die Abstrakte Vaterklasse von \textbf{BehaviourEditor} und \textbf{TaskEditor}
+Die \textbf{NodeEditor} Klasse hingegen ist für die Veränderung der Knoten zuständig, wie etwa Position in der Baumebene oder Erstellen neuer Kind-Knoten. Sie ist die abstrakte Vaterklasse vom \textbf{BehaviourEditor} und dem \textbf{TaskEditor}.
 
 \subsection{TaskAttributes}
-Da der Nutzer die Möglichkeit haben sollte Attribute von bestimmten Tasks zu verändern, musste ein System geschaffen werden das es erlaubt Attribute die verändert werden können anzumelden.
-Um eine Kommunikation zwischen UI und Klasse zu ermöglichen kann der Entwickler einen Setterfunktion für die Variablen anmelden. Momentan werden \textbf{FLOAT}, \textbf{INT}, \textbf{BOOL} und \textbf{STRING} unterstützt. Ein Beispiel für die Verwendung eines \textbf{STRING} kann in der \textbf{OutputTask} Klasse gefunden werden.
+Da der Nutzer die Möglichkeit haben sollte Attribute von bestimmten Tasks zu verändern, musste ein System geschaffen werden, das es erlaubt Attribute, die verändert werden können, anzumelden.
+Um eine Kommunikation zwischen UI und Klasse zu ermöglichen, kann der Entwickler eine Setterfunktion für die Variablen anmelden. Momentan werden \textbf{FLOAT}, \textbf{INT}, \textbf{BOOL} und \textbf{STRING} unterstützt. Ein Beispiel für die Verwendung eines \textbf{STRING} kann in der \textbf{OutputTask} Klasse gefunden werden.
